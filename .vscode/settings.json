@@ -1,0 +1,13 @@
+{
+  "[php]": {
+    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
+  },
+  "files.defaultLanguage": "markdown",
+  "files.associations": {
+    "*.pict": "powershell",
+  },
+  "chat.promptFiles": true,
+  "chat.agent.enabled": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.codeGeneration.instructions": []
+}
