@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -exo pipefail
+
 ### 一時ディレクトリにPHPプロジェクトのスケルトンの作成します
 composer create-project --prefer-dist --no-interaction --working-dir=/tmp cakephp/app php_project
 
