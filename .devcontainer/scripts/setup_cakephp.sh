@@ -124,3 +124,6 @@ layout node
 source_env_if_exists .env
 EOS
 direnv allow
+
+### PHPStanを開発パッケージに追加
+composer require phpstan/phpstan --dev -q
