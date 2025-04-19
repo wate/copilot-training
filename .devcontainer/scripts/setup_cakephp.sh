@@ -49,11 +49,15 @@ export EMAIL_TRANSPORT_DEFAULT_URL="smtp://mailpit:1025"
 # export LOG_ERROR_URL="file:///path/to/logs/?levels[]=warning&levels[]=error&levels[]=critical&levels[]=alert&levels[]=emergency&file=error"
 EOS
 
-##### dotenvパッケージを必須パッケージに変更します
+#### dotenvパッケージを必須パッケージに変更します
 
 composer require josegonzalez/dotenv -q
 
-##### `bootstrap.php`で`.env`を読み込む処理を有効化します
+### PHPStanを開発パッケージに追加します
+
+composer require phpstan/phpstan --dev -q
+
+### `bootstrap.php`で`.env`を読み込む処理を有効化します
 
 cat <<'EOS' >bootstrap.php.patch
 diff --git a/config/bootstrap.php b/config/bootstrap.php
@@ -85,7 +89,7 @@ EOS
 patch -p1 <bootstrap.php.patch
 rm bootstrap.php.patch
 
-##### cakeコマンドのコマンド補完が効くようにします
+### cakeコマンドのコマンド補完が効くようにします
 
 mkdir -p ~/.local/share/bash-completion/completions
 cp bin/bash_completion.sh ~/.local/share/bash-completion/completions/cake
