@@ -1,30 +1,26 @@
-# EditorConfig is awesome: https://EditorConfig.org
+; This file is for unifying the coding style for different editors and IDEs.
+; More information at https://editorconfig.org
 
-# top-most EditorConfig file
 root = true
 
 [*]
-charset = utf-8
+indent_style = space
+indent_size = 4
 end_of_line = lf
-indent_style = space
-indent_size = 2
-trim_trailing_whitespace = true
 insert_final_newline = true
-max_line_length = 120
+trim_trailing_whitespace = true
 
-[*.{py,php}]
-indent_style = space
-indent_size = 4
+[*.bat]
+end_of_line = crlf
 
-[*/templates/*.php]
-indent_style = space
+[*.yml]
 indent_size = 2
 
-[*.md]
-indent_style = space
-indent_size = 4
-trim_trailing_whitespace = false
+[*.twig]
+insert_final_newline = false
 
-[*.go]
+[*.neon]
 indent_style = tab
 
+[Makefile]
+indent_style = tab
