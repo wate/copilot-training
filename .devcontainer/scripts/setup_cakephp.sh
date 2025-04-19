@@ -125,5 +125,5 @@ source_env_if_exists .env
 EOS
 direnv allow
 
-### PHPStanを開発パッケージに追加
+### PHPStanを開発パッケージに追加します
 composer require phpstan/phpstan --dev -q
