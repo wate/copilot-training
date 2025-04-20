@@ -1,5 +1,5 @@
 {
-  "name": "copilot training",
+  "name": "php devcontainer",
   "dockerComposeFile": "compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
