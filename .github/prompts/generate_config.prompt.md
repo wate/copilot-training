@@ -4,7 +4,7 @@
 実行してほしいこと
 -------------------------
 
-- 以下の各ツールの設定ファイルを生成する
+- 以下の各ツールの設定ファイルを生成しなさい
     - pre-commit
     - EditorConfig
     - MarkdownLint
@@ -15,7 +15,7 @@
     - YAML Lint
     - Rollup
     - textlint
-- 設定ファイルは以下の形式で生成する
+- 設定ファイルは以下の形式で生成すること
     - pre-commit: .pre-commit-config.yaml
     - EditorConfig: .editorconfig
     - MarkdownLint: .markdownlint.yml
@@ -26,8 +26,8 @@
     - YAML Lint: .yamllint.yaml
     - Rollup: rollup.config.js
     - textlint: .textlintrc.yml
-- 設定ファイルは、各ツールのトップディレクトリに配置する
-- 各設定項目の説明を日本語でコメントとして記載する
+- 設定ファイルは、各ツールのトップディレクトリに配置すること
+- 各設定項目の説明を日本語でコメントとして記載すること
 
 禁止事項
 -------------------------
