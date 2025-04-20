@@ -1,12 +1,43 @@
 <?xml version="1.0"?>
-<ruleset name="App">
-    <config name="installed_paths" value="../../cakephp/cakephp-codesniffer"/>
+<ruleset name="Coding Rule">
+  <description>Coding Rule</description>
+  <!-- display progress -->
+  <arg value="p"/>
+  <!-- use colors in output -->
+  <arg name="colors"/>
+  <!-- inherit rules from: -->
+  <rule ref="PSR12">
+    <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+    <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
+    <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock"/>
+    <exclude name="PSR12.Files.FileHeader.IncorrectOrder"/>
+  </rule>
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+  <rule ref="Generic.Files.LineLength">
+    <properties>
+      <property name="lineLimit" value="160"/>
+      <property name="absoluteLineLimit" value="200"/>
+      <property name="ignoreComments" value="true" />
+    </properties>
+    <exclude-pattern>*/templates/*</exclude-pattern>
+  </rule>
+  <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+    <exclude-pattern>*/config/Migrations/*</exclude-pattern>
+    <exclude-pattern>*/config/Seeds/*</exclude-pattern>
+  </rule>
+  <rule ref="PSR1.Files.SideEffects">
+    <exclude-pattern>*/config/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+  </rule>
+  <rule ref="PSR1.Methods.CamelCapsMethodName">
+    <exclude-pattern>*/src/Controller/*</exclude-pattern>
+    <exclude-pattern>*/src/Command/*</exclude-pattern>
+    <exclude-pattern>*/src/Shell/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+  </rule>
 
-    <rule ref="CakePHP"/>
-    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint">
-        <exclude-pattern>*/src/Controller/*</exclude-pattern>
-    </rule>
-
-    <file>src/</file>
-    <file>tests/</file>
+  <!-- Paths to check -->
+  <file>config</file>
+  <file>src</file>
+  <file>tests</file>
 </ruleset>
