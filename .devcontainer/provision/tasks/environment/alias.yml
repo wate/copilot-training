@@ -8,8 +8,3 @@
   ansible.builtin.lineinfile:
     path: ~/.bashrc
     line: alias lg="lazygit"
-- name: Set copilot alias
-  ## @see https://docs.github.com/ja/copilot/managing-copilot/configure-personal-settings/configuring-github-copilot-in-the-cli
-  ansible.builtin.lineinfile:
-    path: ~/.bashrc
-    line: eval "$(gh copilot alias -- bash)"

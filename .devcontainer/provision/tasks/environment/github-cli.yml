@@ -4,6 +4,7 @@
   ansible.builtin.command:
     cmd: gh extension list
   register: gh_extension_result
+  changed_when: false
 - name: Set installed extension variable
   ansible.builtin.set_fact:
     installed_extensions: "{{ gh_extension_result.stdout_lines | map('regex_search', '\\t([^\\t]+)\\t') | map('trim') }}"
@@ -15,3 +16,9 @@
   loop_control:
     loop_var: ext_name
     label: "{{ ext_name }}"
+- name: Set copilot alias
+  ## @see https://docs.github.com/ja/copilot/managing-copilot/configure-personal-settings/configuring-github-copilot-in-the-cli
+  ansible.builtin.lineinfile:
+    path: ~/.bashrc
+    line: eval "$(gh copilot alias -- bash)"
+  when: '"github/gh-copilot" in github_cli_extensions | default([])'

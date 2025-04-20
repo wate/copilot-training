@@ -9,7 +9,7 @@ services:
     environment:
       TZ: Asia/Tokyo
       GITHUB_TOKEN: "${GITHUB_TOKEN}"
-      GH_TOKEN: "${GH_TOKEN}"
+      GH_TOKEN: "${GH_TOKEN:-${GITHUB_TOKEN}}"
     volumes:
       - ..:/workspace:cached
       - ./php/z-custom.ini:/usr/local/etc/php/conf.d/z-custom.ini
