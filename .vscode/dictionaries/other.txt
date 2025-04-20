@@ -4,6 +4,7 @@ axllent
 behaviour
 CAKECORE
 CAKEMODEL
+dbml
 dearmor
 devcontainers
 dotglob
@@ -32,6 +33,7 @@ noninteractive
 Repolib
 shopt
 silversearcher
+skel
 Taskfile
 venvs
 webroot

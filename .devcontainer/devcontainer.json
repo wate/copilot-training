@@ -1,5 +1,5 @@
 {
-  "name": "php devcontainer",
+  "name": "copilot training",
   "dockerComposeFile": "compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
@@ -54,7 +54,7 @@
     8025,
     1025,
     3306,
-    // 7700
+    7700
   ],
   "postCreateCommand": "if [ -f .devcontainer/provision/post_create.sh ]; then bash .devcontainer/provision/post_create.sh; fi",
   "postStartCommand": "if [ -f .devcontainer/provision/post_start.sh ]; then bash .devcontainer/provision/post_start.sh; fi",
