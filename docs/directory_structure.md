@@ -2,68 +2,84 @@
 =========================
 
 ```
-├ bin
-├ config
-│   └ schema
-├ docs
-├ logs
-├ plugins
-├ resources
-├ src
-│   ├ Console
-│   ├ Controller
-│   ├ Model
-│   └ View
-├ templates
-│   ├ cell
-│   ├ element
-│   ├ email
-│   ├ Error
-│   ├ layout
-│   └ Pages
-├ tests
-│   ├ Fixture
-│   └ TestCase
-├ tmp
-│   ├ cache
-│   ├ sessions
-│   └ tests
-├ vendor
-│   ├ bin
-│   ├ brick
-│   ├ cakephp
-│   ├ composer
-│   ├ dealerdirect
-│   ├ doctrine
-│   ├ jasny
-│   ├ josegonzalez
-│   ├ justinrainbow
-│   ├ laminas
-│   ├ league
-│   ├ m1
-│   ├ marc-mabe
-│   ├ mobiledetect
-│   ├ myclabs
-│   ├ nikic
-│   ├ phar-io
-│   ├ phpstan
-│   ├ phpunit
-│   ├ psr
-│   ├ react
-│   ├ robmorgan
-│   ├ sebastian
-│   ├ seld
-│   ├ slevomat
-│   ├ squizlabs
-│   ├ staabm
-│   ├ symfony
-│   ├ theseer
-│   └ twig
-└ webroot
-    ├ css
-    ├ font
-    ├ img
-    └ js
+├ bin/
+├ config/
+│   └ schema/
+├ docs/
+├ logs/
+├ plugins/
+├ resources/
+├ src/
+│   ├ Console/
+│   ├ Controller/
+│   │   └ Component/
+│   ├ Model/
+│   │   ├ Behavior/
+│   │   ├ Entity/
+│   │   └ Table/
+│   └ View/
+│       ├ Cell/
+│       └ Helper/
+├ templates/
+│   ├ cell/
+│   ├ element/
+│   │   └ flash/
+│   ├ email/
+│   │   ├ html/
+│   │   └ text/
+│   ├ Error/
+│   ├ layout/
+│   │   └ email/
+│   └ Pages/
+├ tests/
+│   ├ Fixture/
+│   └ TestCase/
+│       ├ Controller/
+│       ├ Model/
+│       └ View/
+├ tmp/
+│   ├ cache/
+│   │   ├ models/
+│   │   ├ persistent/
+│   │   └ views/
+│   ├ sessions/
+│   └ tests/
+├ vendor/
+│   ├ bin/
+│   ├ brick/
+│   ├ cakephp/
+│   ├ composer/
+│   ├ dealerdirect/
+│   ├ doctrine/
+│   ├ jasny/
+│   ├ josegonzalez/
+│   ├ justinrainbow/
+│   ├ laminas/
+│   ├ league/
+│   ├ m1/
+│   ├ marc-mabe/
+│   ├ mobiledetect/
+│   ├ myclabs/
+│   ├ nikic/
+│   ├ phar-io/
+│   ├ phpstan/
+│   ├ phpunit/
+│   ├ psr/
+│   ├ react/
+│   ├ robmorgan/
+│   ├ sebastian/
+│   ├ seld/
+│   ├ slevomat/
+│   ├ squizlabs/
+│   ├ staabm/
+│   ├ symfony/
+│   ├ theseer/
+│   └ twig/
+└ webroot/
+    ├ css/
+    ├ font/
+    ├ img/
+    └ js/
 ```
 
 ディレクトリの役割
