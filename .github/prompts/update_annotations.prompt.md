@@ -61,6 +61,7 @@
 - `src/Config/bootstrap.php`
 - `src/Controller/ErrorController.php`
 - `src/Controller/AppController.php`
+- `src/Controller/PagesController.php`
 - `src/Console/Installer.php`
 - `vendor/*`
 
