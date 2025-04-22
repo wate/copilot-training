@@ -16,4 +16,5 @@ return [
         'onlyDebug' => true,
         'onlyCli' => true,
     ],
+    'Cake/Localized' => [],
 ];

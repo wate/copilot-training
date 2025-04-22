@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3766eabaf264e5a78e01aa43395ef414",
+    "content-hash": "1aadce8d713769eac117affeea9a203c",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -268,6 +268,59 @@
                 "source": "https://github.com/cakephp/chronos"
             },
             "time": "2024-07-18T03:18:04+00:00"
+        },
+        {
+            "name": "cakephp/localized",
+            "version": "5.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/localized.git",
+                "reference": "b3d4db42de6a3a17bef7d2c07132d00889a55ad9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/localized/zipball/b3d4db42de6a3a17bef7d2c07132d00889a55ad9",
+                "reference": "b3d4db42de6a3a17bef7d2c07132d00889a55ad9",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^5.0.1",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "^5.0",
+                "phpunit/phpunit": "^10.2"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Cake\\Localized\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/cakephp/localized/graphs/contributors"
+                }
+            ],
+            "description": "CakePHP Localized Plugin",
+            "homepage": "https://github.com/cakephp/localized",
+            "keywords": [
+                "cakephp",
+                "i18n",
+                "l10n",
+                "localized"
+            ],
+            "support": {
+                "forum": "https://stackoverflow.com/tags/cakephp",
+                "issues": "https://github.com/cakephp/localized/issues",
+                "source": "https://github.com/cakephp/localized"
+            },
+            "time": "2024-11-18T22:28:04+00:00"
         },
         {
             "name": "cakephp/migrations",
