@@ -1,5 +1,5 @@
 {
-  "name": "copilot training",
+  "name": "php devcontainer",
   "dockerComposeFile": "compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
@@ -35,7 +35,8 @@
         "shd101wyy.markdown-preview-enhanced",
         "xdebug.php-debug",
         "bmewburn.vscode-intelephense-client",
-        "SanderRonde.phpstan-vscode",
+        "esbenp.prettier-vscode",
+        "adpyke.vscode-sql-formatter",
         "vscode-icons-team.vscode-icons",
         "oderwat.indent-rainbow",
         "mechatroner.rainbow-csv",
@@ -43,8 +44,7 @@
         "redhat.vscode-yaml",
         "redhat.ansible",
         "streetsidesoftware.code-spell-checker",
-        "dbcode.dbcode",
-        "adpyke.vscode-sql-formatter"
+        "dbcode.dbcode"
       ]
     }
   },
