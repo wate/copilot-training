@@ -1,5 +1,8 @@
 ---
 # code: language=ansible
+## -----------------------------------
+## とりあえずAIに生成させただけの代物、色々と手直しが必要なため要修正
+## -----------------------------------
 - name: Deploy CakePHP Application
   hosts: all
   become: false
@@ -17,7 +20,7 @@
           when: not checkout_result.before
           block:
             - name: Composerの依存パッケージをインストール
-              ansible.builtin.composer:
+              community.general.composer:
                 command: install
                 working_dir: "{{ app_deploy_path }}"
                 no_dev: true
@@ -57,7 +60,7 @@
                 DEBUG: "{{ debug | default('false') }}"
                 SECURITY_SALT: "{{ security_salt | default('') }}"
         - name: Composerの依存パッケージを更新
-          ansible.builtin.composer:
+          community.general.composer:
             command: install
             working_dir: "{{ app_deploy_path }}"
             no_dev: true
@@ -77,19 +80,19 @@
             chdir: "{{ app_deploy_path }}"
           environment:
             DEBUG: "{{ debug | default('false') }}"
-        - name: アセットのシンボリックリンクを作成（オプション）
+        - name: アセットのシンボリックリンクを作成
           ansible.builtin.command:
             cmd: bin/cake plugin assets symlink
             chdir: "{{ app_deploy_path }}"
           environment:
-            DEBUG: "{{ debug | default(false) }}"
+            DEBUG: "{{ debug | default('false') }}"
           when: create_asset_symlinks | default(false) | bool
         - name: データベースマイグレーションの実行
           ansible.builtin.command:
             cmd: bin/cake migrations migrate
             chdir: "{{ app_deploy_path }}"
         - name: ORMキャッシュの再構築
-          when: rebuild_orm_cache | default(false) | bool
+          when: rebuild_orm_cache | default('false') | bool
           block:
             - name: ORMキャッシュのクリア
               ansible.builtin.command:
