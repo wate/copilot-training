@@ -49,32 +49,37 @@
 -------------------------
 
 - EditorConfig: `.editorconfig`
-- Markdown: `.markdownlint.yml`
-- PHP: `phpcs.xml`
+- Markdown:
+    - `.markdownlint.yml`
+    - `.markdownlint.yaml`
+    - `.markdownlint.json`
+- PHP:
+    - `phpcs.xml`
+    - `phpstan.neon`
+    - `phpstan.neon.dist`
+    - `phpstan.dist.neon`
+    - `.php-cs-fixer.dist.php`
+    - `.php-cs-fixer.php`
 - Prettier:
     - `.prettierrc`
+    - `.prettierrc.js`
     - `.prettierrc.json`
     - `.prettierrc.yml`
     - `.prettierrc.yaml`
-    - `.prettierrc.js`
     - `.prettierrc.toml`
 - ESLint:
     - `.eslint.config.js`
     - `.eslintrc`
-    - `.eslintrc.json`
+    - `.eslintrc.js`
     - `.eslintrc.yml`
     - `.eslintrc.yaml`
-    - `.eslintrc.js`
-    - `.eslintrc.cjs`
-    - `.eslintrc.mjs`
     - `.eslintrc.toml`
+    - `.eslintrc.json`
     - `package.json`（`eslintConfig`セクション）
 - Stylelint:
     - `stylelint.config.js`
-    - `.stylelintrc.js`
-    - `.stylelintrc.mjs`
-    - `.stylelintrc.cjs`
     - `.stylelintrc`
+    - `.stylelintrc.js`
     - `.stylelintrc.yml`
     - `.stylelintrc.yaml`
     - `.stylelintrc.json`
@@ -83,6 +88,12 @@
     - `.yamllint`
     - `.yamllint.yaml`
     - `.yamllint.yml`
+- textlint:
+    - `.textlintrc`
+    - `.textlintrc.js`
+    - `.textlintrc.json`
+    - `.textlintrc.yml`
+    - `.textlintrc.yaml`
 - Ansible:
     - `.ansible-lint`
     - `.ansible-lint.yml`
