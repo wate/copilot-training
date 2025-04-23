@@ -1,4 +1,5 @@
 antfu
+autoloader
 autoremove
 axllent
 behaviour
