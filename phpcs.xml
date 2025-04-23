@@ -9,7 +9,6 @@
   <rule ref="PSR12">
     <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
     <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
-    <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock"/>
     <exclude name="PSR12.Files.FileHeader.IncorrectOrder"/>
   </rule>
   <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
