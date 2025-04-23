@@ -24,7 +24,7 @@
           fi
 - name: Set draw.io diagram setting
   ansible.builtin.blockinfile:
-    path: "{{ base_dir }}"
+    path: "{{ base_dir }}/.gitattributes"
     marker: "## {mark} draw.io diagram ANSIBLE MANAGED BLOCK -->"
     content: |
       *.drawio linguist-detectable=true
