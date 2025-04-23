@@ -1,6 +1,6 @@
 ---
 # code: language=ansible
-- name: Deploy App
+- name: Deploy CakePHP Application
   hosts: all
   become: false
   tasks:
@@ -13,28 +13,92 @@
     - name: セットアップ処理
       when: checkout_result is changed
       block:
-        # - name: rsyncを使ったデプロイ
-        #   ## @see https://docs.ansible.com/ansible/latest/collections/ansible/posix/synchronize_module.html
-        #   ansible.posix.synchronize:
-        #     src: dist/
-        #     dest: rsync://{{ inventory_hostname }}{{ app_deploy_path }}
-        #     rsync_opts: "{{ rsync_exclude_opts | map('regex_replace', '(.+)', '--exclude=\\1') }}"
-        #   delegate_to: 127.0.0.1
         - name: 新規セットアップ処理
           when: not checkout_result.before
           block:
-            ## 以下、新規設置時の処理
-            - name: 初期セットアップ処理
-              ansible.builtin.shell:
-                cmd: |
-                  echo "新規設置時の処理を実装してください。"
+            - name: Composerの依存パッケージをインストール
+              ansible.builtin.composer:
+                command: install
+                working_dir: "{{ app_deploy_path }}"
+                no_dev: true
+                optimize_autoloader: true
+                no_interaction: true
+            - name: 設定ファイルをコピー
+              ansible.builtin.copy:
+                src: "{{ app_deploy_path }}/config/app_local.example.php"
+                dest: "{{ app_deploy_path }}/config/app_local.php"
+                remote_src: true
+                force: false
+            - name: 一時ディレクトリの作成
+              ansible.builtin.file:
+                path: "{{ app_deploy_path }}/{{ item }}"
+                state: directory
+                mode: '0775'
+              loop:
+                - tmp/cache/models
+                - tmp/cache/persistent
+                - tmp/cache/views
+                - tmp/sessions
+                - tmp/tests
+                - tmp/debug_kit
+                - logs
+            - name: セキュリティソルトの設定
+              ansible.builtin.replace:
+                path: "{{ app_deploy_path }}/config/app_local.php"
+                regexp: "'SecuritySalt'.*"
+                replace: "'SecuritySalt' => env('SECURITY_SALT', '{{ security_salt }}'),"
+              when: security_salt is defined
+            - name: データベースマイグレーションの実行
+              ansible.builtin.command:
+                cmd: bin/cake migrations migrate
                 chdir: "{{ app_deploy_path }}"
-        ## 以下、更新時の共通処理
-        - name: 更新時の処理
-          ansible.builtin.shell:
-            cmd: |
-              echo "更新時の処理を実装してください。"
+              environment:
+                DATABASE_URL: "{{ database_url | default('') }}"
+                DEBUG: "{{ debug | default('false') }}"
+                SECURITY_SALT: "{{ security_salt | default('') }}"
+        - name: Composerの依存パッケージを更新
+          ansible.builtin.composer:
+            command: install
+            working_dir: "{{ app_deploy_path }}"
+            no_dev: true
+            optimize_autoloader: true
+            no_interaction: true
+        - name: 一時ディレクトリの権限を設定
+          ansible.builtin.file:
+            path: "{{ app_deploy_path }}/{{ item }}"
+            state: directory
+            mode: '0775'
+          loop:
+            - tmp
+            - logs
+        - name: キャッシュをクリア
+          ansible.builtin.command:
+            cmd: bin/cake cache clear_all
             chdir: "{{ app_deploy_path }}"
+          environment:
+            DEBUG: "{{ debug | default('false') }}"
+        - name: アセットのシンボリックリンクを作成（オプション）
+          ansible.builtin.command:
+            cmd: bin/cake plugin assets symlink
+            chdir: "{{ app_deploy_path }}"
+          environment:
+            DEBUG: "{{ debug | default(false) }}"
+          when: create_asset_symlinks | default(false) | bool
+        - name: データベースマイグレーションの実行
+          ansible.builtin.command:
+            cmd: bin/cake migrations migrate
+            chdir: "{{ app_deploy_path }}"
+        - name: ORMキャッシュの再構築
+          when: rebuild_orm_cache | default(false) | bool
+          block:
+            - name: ORMキャッシュのクリア
+              ansible.builtin.command:
+                cmd: bin/cake orm_cache clear
+                chdir: "{{ app_deploy_path }}"
+            - name: ORMキャッシュの構築
+              ansible.builtin.command:
+                cmd: bin/cake orm_cache build
+                chdir: "{{ app_deploy_path }}"
         - name: デプロイ完了時の通知処理
           ## @see https://docs.ansible.com/ansible/latest/collections/community/general/slack_module.html
           community.general.slack:
