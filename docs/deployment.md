@@ -9,79 +9,67 @@
 
 デプロイを実行するために、以下の環境が必要です。
 
-* Ansible 2.9以上
-* Git（リモートリポジトリからのクローンに使用）
-* Composer（PHPの依存パッケージ管理に使用）
+### デプロイ実行環境
+
+実行環境には以下のソフトウェアがインストールされていることを確認してください。
+
+* Ansible
 * SSH接続情報（各環境のサーバーに接続するための認証情報）
+
+### デプロイ先サーバー
+
+デプロイ先サーバーで以下のソフトウェアがインストールされていることを確認してください。
+
+* Git（リモートリポジトリからのクローンに使用）
+* PHP（バージョンはプロジェクトに依存）
+* Composer（PHPの依存パッケージ管理に使用）
 
 デプロイ方法
 -------------------------
 
 各環境毎のデプロイ方法は以下のとおりです。
 
-### 開発環境（develop）
+### 開発環境（Develop）
 
-開発環境へのデプロイは、以下のコマンドを実行します。
+以下のコマンドを実行して開発環境へのデプロイを行います。
 
 ```sh
 ansible-playbook -i inventory.yml deploy.yml --limit develop
 ```
 
-### ステージング環境（staging）
+### ステージング環境（Staging）
 
-ステージング環境へのデプロイは、以下のコマンドを実行します。
+以下のコマンドを実行してステージング環境へのデプロイを行います。
 
 ```sh
 ansible-playbook -i inventory.yml deploy.yml --limit staging
 ```
 
-### 本番環境（production）
+### 本番環境（Production）
 
-本番環境へのデプロイは、以下のコマンドを実行します。
+以下のコマンドを実行して本番環境へのデプロイを行います。
 
 ```sh
 ansible-playbook -i inventory.yml deploy.yml --limit production
 ```
 
-### 環境変数の設定
-
-デプロイ時に追加設定が必要な場合は、以下のように環境変数を設定します。
-
-```sh
-# Slackへの通知を有効にする場合
-export SLACK_TOKEN="xoxb-xxxxxxxxxxxx-xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx"
-export SLACK_CHANNEL="#デプロイ通知"
-export SLACK_USERNAME="デプロイボット"
-
-ansible-playbook -i inventory.yml deploy.yml --limit production
-```
-
-変数
+変数設定
 -------------------------
 
 Playbookで利用されている主な変数は以下のとおりです。
 
-### インベントリファイル（inventory.yml）の変数
+### inventory.ymlで定義されている変数
 
 * `app_repo`: アプリケーションのGitリポジトリURL
 * `app_deploy_path`: デプロイ先のパス
-* `app_repo_branch`: デプロイ対象のGitブランチ（環境ごとに設定）
-* `app_env`: アプリケーション環境（development, staging, production）
-* `rsync_exclude_opts`: rsync実行時に除外するファイル・ディレクトリのリスト
+* `app_repo_branch`: デプロイするブランチ名（環境ごとに異なる）
+* `app_env`: アプリケーション実行環境（development、staging、production）
 
-### サーバー接続に関する変数（各環境ごとに設定可能）
+### deploy.ymlで利用される変数
 
-* `ansible_host`: サーバーのIPアドレスまたはホスト名
-* `ansible_port`: SSHポート番号
-* `ansible_user`: SSH接続ユーザー名
-* `ansible_password`: SSH接続パスワード（非推奨、SSH鍵認証を推奨）
-* `ansible_ssh_private_key_file`: SSH秘密鍵のパス
-
-### プレイブック（deploy.yml）内で使用される変数
-
-* `security_salt`: CakePHPのセキュリティソルト（未設定の場合は自動生成されません）
-* `database_url`: データベース接続URL（設定されている場合のみ使用）
-* `debug`: デバッグモードの設定（デフォルトはfalse）
+* `security_salt`: CakePHPのセキュリティソルト（必要に応じて定義）
+* `database_url`: データベース接続URL
+* `debug`: デバッグモードの有効/無効設定（デフォルトはfalse）
 * `create_asset_symlinks`: アセットのシンボリックリンクを作成するかどうか（デフォルトはfalse）
 * `rebuild_orm_cache`: ORMキャッシュを再構築するかどうか（デフォルトはfalse）
 
@@ -93,10 +81,12 @@ Playbookで利用されている主な変数は以下のとおりです。
 
 ### 1. ソースコードのチェックアウト
 
+Gitリポジトリからアプリケーションのソースコードをチェックアウトします。
+
 ```sh
-git clone [リポジトリURL] [デプロイ先パス]
-cd [デプロイ先パス]
-git checkout [ブランチ名]
+git clone {app_repo} {app_deploy_path}
+cd {app_deploy_path}
+git checkout {app_repo_branch}
 ```
 
 ### 2. 新規セットアップ処理（初回デプロイ時）
@@ -104,11 +94,10 @@ git checkout [ブランチ名]
 #### 2.1 Composerの依存パッケージをインストール
 
 ```sh
-cd [デプロイ先パス]
 composer install --no-dev --optimize-autoloader --no-interaction
 ```
 
-#### 2.2 設定ファイルのコピー
+#### 2.2 設定ファイルの準備
 
 ```sh
 cp config/app_local.example.php config/app_local.php
@@ -117,47 +106,54 @@ cp config/app_local.example.php config/app_local.php
 #### 2.3 一時ディレクトリの作成
 
 ```sh
-mkdir -p tmp/cache/models tmp/cache/persistent tmp/cache/views tmp/sessions tmp/tests tmp/debug_kit logs
-chmod 775 tmp/cache/models tmp/cache/persistent tmp/cache/views tmp/sessions tmp/tests tmp/debug_kit logs
+mkdir -p tmp/cache/models
+mkdir -p tmp/cache/persistent
+mkdir -p tmp/cache/views
+mkdir -p tmp/sessions
+mkdir -p tmp/tests
+mkdir -p tmp/debug_kit
+mkdir -p logs
+chmod -R 0775 tmp logs
 ```
 
 #### 2.4 セキュリティソルトの設定
 
-```sh
-# app_local.phpファイル内のSecuritySalt設定を更新
-```
+設定ファイル（config/app_local.php）内のセキュリティソルト設定を更新します。
 
 #### 2.5 データベースマイグレーションの実行
 
 ```sh
-DATABASE_URL=[データベース接続URL] DEBUG=false SECURITY_SALT=[セキュリティソルト] bin/cake migrations migrate
+export DATABASE_URL="{database_url}"
+export DEBUG="{debug}"
+export SECURITY_SALT="{security_salt}"
+bin/cake migrations migrate
 ```
 
-### 3. 更新時のセットアップ処理
+### 3. 更新時の処理
 
 #### 3.1 Composerの依存パッケージを更新
 
 ```sh
-cd [デプロイ先パス]
 composer install --no-dev --optimize-autoloader --no-interaction
 ```
 
 #### 3.2 一時ディレクトリの権限を設定
 
 ```sh
-chmod 775 -R tmp logs
+chmod -R 0775 tmp logs
 ```
 
 #### 3.3 キャッシュをクリア
 
 ```sh
-DEBUG=false bin/cake cache clear_all
+export DEBUG="{debug}"
+bin/cake cache clear_all
 ```
 
 #### 3.4 アセットのシンボリックリンクを作成（必要な場合）
 
 ```sh
-DEBUG=false bin/cake plugin assets symlink
+bin/cake plugin assets symlink
 ```
 
 #### 3.5 データベースマイグレーションの実行
@@ -173,82 +169,58 @@ bin/cake orm_cache clear
 bin/cake orm_cache build
 ```
 
-### 4. 通知処理
-
-成功または失敗時にSlackへの通知を設定している場合、自動的に通知が送信されます。
-
 セキュリティに関する注意点
 -------------------------
 
-### SSH鍵認証の利用
+### セキュリティソルトの管理
 
-パスワード認証よりもSSH鍵認証を使用することを強く推奨します。
+* セキュリティソルトは必ず環境ごとに異なる値を設定してください。
+* セキュリティソルトは十分な長さと複雑さを持つランダムな文字列を使用してください。
+* セキュリティソルトはソースコード管理システムにはコミットせず、安全に管理してください。
 
-### セキュリティソルト
+### SSH接続情報の管理
 
-プロジェクトごとに一意のセキュリティソルトを設定し、環境変数として管理することを推奨します。
-
-### 機密情報の管理
-
-データベースURL等の機密情報は直接ファイルに記述せず、環境変数などで安全に管理してください。
-
-### 権限設定
-
-デプロイ先のディレクトリやファイルの権限は必要最小限に設定し、特に設定ファイルへのアクセスを制限してください。
+* SSH秘密鍵は適切なパーミッション（600）で保護し、安全に管理してください。
+* パスワード認証よりも、SSH鍵認証を優先して使用してください。
+* 本番環境への接続情報は特に厳重に管理してください。
 
 トラブルシューティング
 -------------------------
 
-### デプロイ失敗時の対応
+### デプロイに失敗した場合
 
-1. **ログの確認**: Ansibleの実行ログを確認して、失敗した箇所を特定します。
-2. **手動での確認**: 失敗したタスクを手動で実行し、エラーの詳細を確認します。
-3. **権限の確認**: ファイルやディレクトリの権限が適切に設定されているか確認します。
-4. **ディスク容量の確認**: サーバーのディスク容量が不足していないか確認します。
+1. Ansibleのログを確認して、どのタスクで失敗しているか確認します。
+2. 必要な権限があるか確認します（ファイルの書き込み権限など）。
+3. 一時ディレクトリが書き込み可能かどうか確認します。
+4. デプロイ先サーバーの空きディスク容量を確認します。
 
-### よくあるエラーと対応
+### データベースマイグレーションに失敗した場合
 
-1. **Gitリポジトリへのアクセス権限エラー**: SSH鍵が正しく設定されているか確認してください。
-2. **Composerインストール失敗**: メモリ制限やタイムアウト設定を見直してください。
-3. **データベース接続エラー**: 接続情報やデータベースサーバーの状態を確認してください。
-4. **ファイル権限エラー**: Webサーバーのユーザーとデプロイ実行ユーザーの関係を確認してください。
+1. データベース接続設定が正しいか確認します。
+2. マイグレーションファイルに構文エラーがないか確認します。
+3. 手動でマイグレーションを実行して詳細なエラーメッセージを確認します。
 
-メンテナンスモードとロールバック
+```sh
+bin/cake migrations migrate -v
+```
+
+注意点と推奨事項
 -------------------------
 
-現在のPlaybookにはメンテナンスモードやロールバック機能が実装されていません。
-必要に応じて以下のような対応を手動で行うことを検討してください。
+### デプロイ前の準備
 
-### メンテナンスモードの実装案
+* デプロイ前にローカル環境でテストを実行し、問題がないことを確認してください。
+* コミットする前に、不要なデバッグコードやコメントアウトしたコードを削除してください。
 
-メンテナンスモード中であることを示すファイルを作成し、Webサーバーの設定でそのファイルの存在を確認するような仕組みを導入することができます。
+### デプロイ後の確認
 
-### ロールバックの実施方法
+* デプロイ後は、アプリケーションの動作確認を必ず行ってください。
+* ログファイルにエラーが出力されていないか確認してください。
 
-1. 前回のデプロイバージョンにGitリポジトリを戻す
-2. データベースマイグレーションがある場合は、手動でロールバック用のSQLを実行する
-3. キャッシュを全てクリアする
+### Slack通知機能
 
-注意事項と推奨事項
--------------------------
+デプロイの成功または失敗時にSlackへ通知する機能が実装されています。この機能を使用するには、以下の環境変数を設定する必要があります。
 
-### 本番環境への変更前のテスト
-
-本番環境にデプロイする前に、必ずステージング環境でテストを行ってください。
-
-### デプロイ時間の考慮
-
-大規模なデータベースマイグレーションがある場合は、  
-サービス影響の少ない時間帯にデプロイを実施してください。
-
-### バックアップの実施
-
-デプロイ前にデータベースとアプリケーションのバックアップを取得することを推奨します。
-
-### 監視の強化
-
-デプロイ後は、アプリケーションのパフォーマンスやエラーログを注意深く監視してください。
-
-### 段階的なロールアウト
-
-可能であれば、全サーバーへの一斉デプロイではなく、段階的にデプロイすることを検討してください。
+* `SLACK_TOKEN`: Slackの認証トークン
+* `SLACK_CHANNEL`: 通知を送信するSlackチャンネル（オプション）
+* `SLACK_USERNAME`: 通知を送信する際のユーザー名（オプション）
