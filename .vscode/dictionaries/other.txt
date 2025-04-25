@@ -21,6 +21,7 @@ ipaexfont
 josegonzalez
 libfreetype
 libicu
+libimage
 libjpeg
 libpango
 libpangoft
