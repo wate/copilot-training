@@ -9,5 +9,6 @@
   "chat.promptFiles": true,
   "chat.agent.enabled": true,
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-  "github.copilot.chat.codeGeneration.instructions": []
+  "github.copilot.chat.codeGeneration.instructions": [],
+  "ansible.python.interpreterPath": "/usr/bin/python3"
 }

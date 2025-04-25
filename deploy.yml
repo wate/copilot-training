@@ -26,7 +26,6 @@
                 working_dir: "{{ app_deploy_path }}"
                 no_dev: true
                 optimize_autoloader: true
-                no_interaction: true
             - name: 設定ファイルをコピー
               ansible.builtin.copy:
                 src: "{{ app_deploy_path }}/config/app_local.example.php"
@@ -44,7 +43,6 @@
                 - tmp/cache/views
                 - tmp/sessions
                 - tmp/tests
-                - tmp/debug_kit
                 - logs
             - name: セキュリティソルトの設定
               ansible.builtin.replace:
@@ -66,7 +64,6 @@
             working_dir: "{{ app_deploy_path }}"
             no_dev: true
             optimize_autoloader: true
-            no_interaction: true
         - name: 一時ディレクトリの権限を設定
           ansible.builtin.file:
             path: "{{ app_deploy_path }}/{{ item }}"
