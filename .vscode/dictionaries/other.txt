@@ -5,6 +5,7 @@ axllent
 behaviour
 CAKECORE
 CAKEMODEL
+dagre
 dbml
 dearmor
 devcontainers

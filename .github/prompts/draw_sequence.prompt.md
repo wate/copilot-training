@@ -50,17 +50,25 @@
 
 アクターがどのようなものかに応じ、以下に定義するshapeを適切に利用すること
 
-- 特定の人を表す: `person`
+- 特定の人: `person`
+    - 特定の人を表す
+    - 特定の人を表す場合はこのshapeを利用する
 - 部門: `rectangle`
-    - 特定の人を指すのではなく人の集まりを表す
+    - 人の集まりを表す
     - 「部門」「部」「課」「係」などはこのshapeを利用する
 - システム: `cylinder`
+    - 何かしらのシステムなどはこのshapeを利用する
+
+### コメントの記法
+
+- コメントは単一行コメントのみを利用し、ブロックコメントは使用しないこと
+    - 単一行コメントは`#`ではじめ、半角スペースで区切ること
 
 禁止事項
 -------------------------
 
-- ターミナルでのコマンド実行は許可しない
-- 識別子（ID）の重複使用はしないこと
+- ディレクトリ作成コマンドは利用しないこと
+- 識別子（ID）の重複使用は禁止する
 - 業務フロー図に存在しない要素や関係を追加しないこと
 - D2以外のダイアグラム言語の構文を混在させないこと
 - 過度に複雑化し、理解困難になるようなシーケンス図を作成しないこと
@@ -119,25 +127,21 @@ shape: sequence_diagram
 ## スタイル定義
 ## -------------------------
 classes: {
-  actor_foo: {
-    style: {
-      fill: "#FFD2A5"
-      stroke: "#FF8000"
-    }
+  actor_human: {
+    shape: person
   }
-  actor_bar: {
-    style: {
-      fill: "#A5D7FF"
-      stroke: "#0080FF"
-    }
+  actor_department: {
+    shape: rectangle
   }
-  actor_baz: {
-    style: {
-      fill: "#D5A5FF"
-      stroke: "#8000FF"
-    }
+  actor_system: {
+    shape: cylinder
   }
   message: {
+    style: {
+      font-size: 12
+    }
+  }
+  operation: {
     style: {
       font-size: 12
     }
@@ -161,18 +165,22 @@ classes: {
 
 ## アクターの定義
 ## -------------------------
-foo: {
+user: {
   shape: person
-  label: "foo"
-  class: actor_foo
+  label: "user"
+  class: actor_human
 }
-bar: {
-  label: "bar"
-  class: actor_bar
+customer_support: {
+  label: "customer_support"
+  class: actor_department
 }
-baz: {
-  label: "baz"
-  class: actor_baz
+development: {
+  label: "development"
+  class: actor_department
+}
+system: {
+  label: "system"
+  class: actor_system
 }
 
 ## シーケンスの定義
@@ -180,16 +188,19 @@ baz: {
 ### 最初のステップ
 first_step: {
   label: "最初のステップ"
-  foo -> bar: "依頼" {
+  user -> customer_support: "依頼" {
     label: "これやって"
     class: message
   }
 
-  bar -> bar: "内容確認" {
+  customer_support -> customer_support: "内容確認" {
     label: "内容確認"
   }
+  customer_support -> system: "チケット起票" {
+    class: operation
+  }
 
-  bar -> foo: "受付通知" {
+  customer_support -> user: "受付通知" {
     label: "わかりました！"
     class: receive
   }
@@ -197,16 +208,14 @@ first_step: {
 ### 次のステップ
 second_step: {
   label: "次のステップ"
-  bar -> baz: "依頼" {
+  customer_support -> development: "依頼" {
     label: "これやって"
     class: message
   }
-
-  baz -> baz: "内容確認" {
-    label: "内容確認"
+  development -> system: "内容確認" {
+    class: operation
   }
-
-  baz -> bar: "受付通知" {
+  development -> customer_support: "受付通知" {
     label: "わかりました！"
     class: receive
   }
@@ -214,55 +223,88 @@ second_step: {
 ### 中間のステップ
 third_step: {
   label: "中間ステップ"
-  bar -> foo: "進捗通知" {
-    label: "作業に着手しました！"
+  development -> system: "ステータス更新" {
+    class: operation
+  }
+  system -> customer_support: "通知" {
+    label: "ステータス変更通知"
+    class: notify
+  }
+  customer_support -> user: "通知" {
+    label: "作業に着手しました"
     class: message
   }
-  baz -> bar: "進捗通知" {
+  development -> system: "進捗率更新" {
+    class: operation
+  }
+  system -> customer_support: "通知" {
     label: "進捗率:25%"
-    class: message
+    class: notify
   }
-  bar -> baz: {
+  customer_support -> development: {
     label: "既読"
     class: notify
   }
-  baz -> bar: "進捗通知" {
+  development -> system: "進捗率更新" {
+    class: operation
+  }
+  system -> customer_support: "通知" {
     label: "進捗率:50%"
+    class: notify
+  }
+  customer_support -> development: {
+    label: "既読"
+    class: notify
+  }
+  development -> customer_support -> user: "進捗報告" {
+    label: "折り返し地点です"
     class: message
   }
-  bar -> foo: "進捗通知" {
-    label: "折り返し地点です！"
-    class: message
-  }
-  bar -> baz: {
-    label: "報告あげときました！"
+  customer_support -> development: {
+    label: "報告あげときました"
     class: receive
   }
-  baz -> bar: "進捗通知" {
-    label: "進捗率:75%"
-    class: message
+  development -> system: "進捗率更新" {
+    class: operation
   }
-  bar -> baz: {
+  system -> customer_support: "通知" {
+    label: "進捗率:75%"
+    class: notify
+  }
+  customer_support -> development: {
     label: "既読"
     class: notify
   }
-  baz -> bar: "進捗通知" {
-    label: "進捗率:100%"
+  development -> system: "進捗率更新" {
+    class: operation
+  }
+  system -> customer_support: "通知" {
+    label: "進捗率:90%"
+    class: notify
+  }
+  development -> customer_support: "進捗通知" {
+    label: "もうすぐ終わりです"
     class: message
   }
-  bar -> baz: {
-    label: "既読"
+  customer_support -> development: {
+    label: "Good!"
     class: notify
   }
 }
 last_step: {
   label: "最後のステップ"
-  baz -> bar -> foo: "完了通知" {
-    label: "終わりました！"
+  development -> system: "ステータス更新" {
+    class: operation
+  }
+  system -> customer_support: "ステータス更新通知" {
+    class: notify
+  }
+  development -> customer_support -> user: "完了通知" {
+    label: "終わりました"
     class: message
   }
-  foo -> bar -> baz: "受領通知" {
-    label: "ご苦労さまでした！"
+  user -> customer_support -> development: "受領通知" {
+    label: "ご苦労さまでした"
     class: receive
   }
 }
