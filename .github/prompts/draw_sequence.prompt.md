@@ -315,7 +315,7 @@ last_step: {
 - 成果物は以下のパスに保存すること
     - ディレクトリ: `docs/workflow/`
     - ファイル名: `{業務名(英語)}_sequence.d2`
-        - 例: `docs/workflow/order_processing_sequence.d2`
+        - 例: `docs/workflow/order_management_sequence.d2`
 
 参考情報
 -------------------------
