@@ -39,6 +39,7 @@ silversearcher
 skel
 Taskfile
 textlintrc
+usecase
 venvs
 webroot
 yarnpkg

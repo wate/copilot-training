@@ -108,17 +108,16 @@ vars: {
 #### Special Shape
 # sequence_diagram / sql_table / class
 ### Styles
-# opacity / stroke / stroke-width / stroke-dash / border-radius font / font-size / font-color
+# opacity / stroke / stroke-width / stroke-dash / border-radius / font / font-size / font-color
 # bold / italic / underline / text-transform / root
 #### shape only
 # fill / fill-pattern / shadow / multiple
-#### rectangle/square only
+#### rectangle / square only
 # 3D
-#### rectangles and ovals
+#### rectangles / ovals only
 # double-border
 #### connection only
 # animated
-## -------------------------
 
 ## シーケンス図の宣言
 ## -------------------------
