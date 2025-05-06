@@ -130,7 +130,7 @@
 - `.textlintrc`
 - `.textlintrc.*`
 
-### ansible-lint
+### Ansible-lint
 
 - `.ansible-lint`
 - `.ansible-lint.yml`
