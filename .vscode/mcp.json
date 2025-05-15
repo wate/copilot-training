@@ -28,7 +28,7 @@
       "args": [
         "mcp-server-git",
         "--repository",
-        "${workspaceFolder}"
+        "./"
       ]
     },
     "sqlite": {
@@ -36,7 +36,7 @@
       "args": [
         "mcp-server-sqlite",
         "--db-path",
-        "${workspaceFolder}/.cache/mcp.db"
+        "./.cache/mcp.db"
       ],
     },
     "perplexity": {

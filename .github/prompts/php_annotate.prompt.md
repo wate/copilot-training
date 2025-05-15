@@ -1,3 +1,6 @@
+---
+mode: 'agent'
+---
 アノテーションの更新
 =========================
 
@@ -77,7 +80,6 @@
  *
  * 追加の説明が必要な場合はここに記述する
  *
- * @package App\Controller
  * @property \App\Model\Table\UsersTable $Users
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
