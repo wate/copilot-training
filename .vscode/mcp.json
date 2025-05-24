@@ -26,9 +26,7 @@
     "git": {
       "command": "uvx",
       "args": [
-        "mcp-server-git",
-        "--repository",
-        "./"
+        "mcp-server-git"
       ]
     },
     "sqlite": {
@@ -36,7 +34,7 @@
       "args": [
         "mcp-server-sqlite",
         "--db-path",
-        "./.cache/mcp.db"
+        ".cache/mcp.db"
       ],
     },
     "perplexity": {

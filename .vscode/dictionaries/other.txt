@@ -3,6 +3,7 @@ autoloader
 autoremove
 axllent
 behaviour
+bizud
 CAKECORE
 CAKEMODEL
 dagre
@@ -17,6 +18,7 @@ freetype
 getmeili
 gierens
 gitprompt
+imagick
 initdb
 inputrc
 ipaexfont
@@ -25,11 +27,14 @@ libfreetype
 libicu
 libimage
 libjpeg
+libmagickwand
 libpango
 libpangoft
 libzip
 localectl
 lxml
+mincho
+morisawa
 myclirc
 mysqld
 nodesource
