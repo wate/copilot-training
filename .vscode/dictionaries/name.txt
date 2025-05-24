@@ -5,6 +5,7 @@ cakephp
 direnv
 dotenv
 duckdb
+exiftool
 github
 gitingest
 gitleaks
@@ -19,14 +20,18 @@ linux
 lnav
 mailpit
 mariadb
+markitdown
 meilisearch
 mkdocs
 mycli
+openai
+pandoc
 phpdocumentor
 phpstorm
 pict
 pipx
 plantuml
+poppler
 postgres
 pymdownx
 redhat
@@ -36,3 +41,4 @@ sshpass
 tbls
 textlint
 virtualbox
+youtube
