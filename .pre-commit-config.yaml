@@ -53,6 +53,7 @@ repos:
           - textlint-rule-ja-hiragana-keishikimeishi
           - textlint-rule-ja-hiragana-hojodoushi
           - "@textlint-ja/textlint-rule-no-synonyms"
+          - "@textlint-ja/textlint-rule-preset-ai-writing"
           - sudachi-synonyms-dictionary
           - textlint-rule-prh
       - id: textlint
