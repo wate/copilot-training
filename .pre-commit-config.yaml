@@ -37,7 +37,7 @@ repos:
       - id: markdownlint
         exclude: ^docs/schema/.*$
   - repo: https://github.com/wate/pre-commit-mirrors-textlint
-    rev: v14.0.4-1
+    rev: v15.2.0-1
     hooks:
       - id: textlint-fix
         name: textlint-fix
@@ -67,6 +67,7 @@ repos:
           - textlint-rule-ja-hiragana-keishikimeishi
           - textlint-rule-ja-hiragana-hojodoushi
           - "@textlint-ja/textlint-rule-no-synonyms"
+          - "@textlint-ja/textlint-rule-preset-ai-writing"
           - sudachi-synonyms-dictionary
           - textlint-rule-prh
   - repo: https://github.com/digitalpulp/pre-commit-php
