@@ -98,9 +98,14 @@ model: Claude Sonnet 4
 -------------------------
 
 - 成果物は以下のパスに保存する
-    - ディレクトリ: `docs/workflow`
-    - ファイル名: `{業務名(英語)}_usecase.d2`
-        - 例: `docs/workflow/order_management_usecase.d2`
+    - ディレクトリ: `docs/feature/{業務(英語小文字、アンダースコア区切り)}`
+    - ファイル名: `usecase.d2`
+        - 例: `docs/feature/order_management/usecase.d2`
+        - 例: `docs/feature/user_registration/usecase.d2`
+- 業務の命名規則
+    - 日本語の業務名を英語に翻訳し、小文字で記述する
+    - 複数単語の場合はアンダースコア（`_`）で区切る
+    - 動詞+名詞の形式を推奨（例: `manage_inventory`, `process_order`）
 - ディレクトリが存在するか確認する
     - ディレクトリが存在しない場合は作成する
 
