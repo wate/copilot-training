@@ -151,4 +151,6 @@ model: Claude Sonnet 4
 出力先ファイル名および命名規則
 -------------------------
 
-docs/requirements.mdに要件定義書を出力する
+- 成果物は以下のパスに保存すること
+    - ディレクトリ: `docs/`
+    - ファイル名: `requirements.md`
