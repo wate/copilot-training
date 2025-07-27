@@ -36,7 +36,7 @@ model: Claude Sonnet 4
 出力フォーマット
 -------------------------
 
-[出力内容のサンプル](./generate_prompt.output.md)
+[出力内容のサンプル](../samples/generate_prompt.md)
 
 出力先ファイル名および命名規則
 -------------------------

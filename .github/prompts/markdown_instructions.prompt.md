@@ -47,7 +47,7 @@ GitHub Copilotカスタムインストラクションファイルの作成
 出力フォーマット
 -------------------------
 
-[出力内容のサンプル](./markdown_instructions.output.md)
+[出力内容のサンプル](../samples/markdown_instructions.md)
 
 出力先ファイル名および命名規則
 -------------------------

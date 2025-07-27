@@ -115,7 +115,7 @@ model: Claude Sonnet 4
 出力フォーマット
 -------------------------
 
-[出力内容のサンプル](./doc_code_style.output.md)
+[出力内容のサンプル](../samples/doc_code_style.md)
 
 ```md
 コーディング規約
