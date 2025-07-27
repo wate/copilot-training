@@ -1,6 +1,7 @@
 {
   "servers": {
     "sequential-thinking": {
+      // https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking
       "command": "npx",
       "args": [
         "-y",
@@ -8,20 +9,32 @@
       ]
     },
     "playwright": {
+      // https://github.com/microsoft/playwright-mcp
       "command": "npx",
       "args": [
         "-y",
         "@playwright/mcp@latest",
-        "--headless"
+        "--headless",
+        "--isolated"
       ]
     },
+    "excel": {
+      // https://github.com/negokaz/excel-mcp-server
+      "command": "npx",
+      "args": [
+        "-y",
+        "@negokaz/excel-mcp-server"
+      ],
+    },
     "duckduckgo": {
+      // https://github.com/nickclyde/duckduckgo-mcp-server
       "command": "uvx",
       "args": [
         "duckduckgo-mcp-server",
       ],
     },
     // "duckdb": {
+    //   // https://github.com/motherduckdb/mcp-server-motherduck
     //   "command": "uvx",
     //   "args": [
     //     "mcp-server-motherduck",
@@ -30,12 +43,14 @@
     //   ]
     // },
     // "markitdown": {
+    //   // https://github.com/microsoft/markitdown
     //   "command": "uvx",
     //   "args": [
     //     "markitdown-mcp"
     //   ]
     // },
     // "meilisearch": {
+    //   // https://github.com/meilisearch/meilisearch-mcp
     //   "command": "uvx",
     //   "args": [
     //     "-n",
