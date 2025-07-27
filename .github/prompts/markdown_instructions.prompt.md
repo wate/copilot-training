@@ -52,6 +52,7 @@ GitHub Copilotカスタムインストラクションファイルの作成
 出力先ファイル名および命名規則
 -------------------------
 
-- 成果物は以下のパスに保存すること
-    - ディレクトリ: `.github/instructions/`
-    - ファイル名: `markdown.instructions.md`
+### ファイル配置ルール
+
+- 出力ファイル: `.github/instructions/markdown.instructions.md`
+- ディレクトリが存在しない場合は作成する

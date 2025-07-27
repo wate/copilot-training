@@ -97,17 +97,18 @@ model: Claude Sonnet 4
 出力先ファイル名および命名規則
 -------------------------
 
-- 成果物は以下のパスに保存する
-    - ディレクトリ: `docs/feature/{業務(英語小文字、アンダースコア区切り)}`
-    - ファイル名: `usecase.d2`
-        - 例: `docs/feature/order_management/usecase.d2`
-        - 例: `docs/feature/user_registration/usecase.d2`
-- 業務の命名規則
-    - 日本語の業務名を英語に翻訳し、小文字で記述する
-    - 複数単語の場合はアンダースコア（`_`）で区切る
-    - 動詞+名詞の形式を推奨（例: `manage_inventory`, `process_order`）
-- ディレクトリが存在するか確認する
-    - ディレクトリが存在しない場合は作成する
+### ファイル配置ルール
+
+- 出力ファイル: `docs/feature/{業務(英語小文字、アンダースコア区切り)}/usecase.d2`
+- ディレクトリが存在しない場合は作成する
+
+### ファイル名の命名規則
+
+- 日本語の業務名を英語に翻訳し、小文字で記述する
+- 複数単語の場合はアンダースコア（`_`）で区切る
+- 動詞+名詞の形式を推奨（例: `manage_inventory`, `process_order`）
+- 例: `docs/feature/order_management/usecase.d2`
+- 例: `docs/feature/user_registration/usecase.d2`
 
 参考情報
 -------------------------
