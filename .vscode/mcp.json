@@ -43,7 +43,7 @@
     //   ]
     // },
     // "markitdown": {
-    //   // https://github.com/microsoft/markitdown
+    //   // https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp
     //   "command": "uvx",
     //   "args": [
     //     "markitdown-mcp"
