@@ -116,21 +116,21 @@ vendor/bin/phpunit
 -------------------------
 
 ```
-├── README.md                 # このファイル
-├── bin/                      # 実行可能スクリプト
-├── config/                   # 設定ファイル
-├── docs/                     # プロジェクトドキュメント
-├── src/                      # アプリケーションソースコード
-│   ├── Controller/              # コントローラークラス
-│   ├── Model/                   # モデルクラス
-│   └── View/                    # ビュークラス
-├── templates/                # テンプレートファイル
-├── tests/                    # テストコード
-├── tmp/                      # 一時ファイル
-├── vendor/                   # 外部ライブラリ
-├── webroot/                  # 公開ディレクトリ
-├── composer.json             # Composer設定
-└── phpunit.xml.dist          # PHPUnit設定
+├ README.md                 # このファイル
+├ bin/                      # 実行可能スクリプト
+├ config/                   # 設定ファイル
+├ docs/                     # プロジェクトドキュメント
+├ src/                      # アプリケーションソースコード
+│   ├ Controller/              # コントローラークラス
+│   ├ Model/                   # モデルクラス
+│   └ View/                    # ビュークラス
+├ templates/                # テンプレートファイル
+├ tests/                    # テストコード
+├ tmp/                      # 一時ファイル
+├ vendor/                   # 外部ライブラリ
+├ webroot/                  # 公開ディレクトリ
+├ composer.json             # Composer設定
+└ phpunit.xml.dist          # PHPUnit設定
 ```
 
 詳細なディレクトリ構造については[ディレクトリ構造ドキュメント](./docs/directory_structure.md)を参照してください。
