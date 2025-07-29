@@ -146,7 +146,7 @@ model: Claude Sonnet 4
 出力フォーマット
 -------------------------
 
-[出力内容のサンプル](../samples/define_requirements.md)
+[出力内容のサンプル](../samples/doc_requirements.md)
 
 出力先ファイル名および命名規則
 -------------------------
