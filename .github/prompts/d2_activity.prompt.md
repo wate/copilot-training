@@ -95,6 +95,7 @@ model: Claude Sonnet 4
     - すべての制御フローは明確な終了条件を持つこと
 - スイムレーンを使用する場合、責任範囲を曖昧にしないこと
 - 並行処理において、適切なフォークとジョインの対応を取らないこと
+- 出力する内容に余計なコメントは含めない
 
 出力フォーマット
 -------------------------
@@ -106,7 +107,7 @@ model: Claude Sonnet 4
 
 ### ファイル配置ルール
 
-- 出力ファイル: `docs/feature/{業務(英語小文字、アンダースコア区切り)}/{プロセス(英語小文字、アンダースコア区切り)}_activity.d2`
+- 出力ファイル: `docs/workflow/{業務プロセス(英語小文字、アンダースコア区切り)}_activity.d2`
 - ディレクトリが存在しない場合は作成する
 
 ### ファイル名の命名規則
@@ -114,8 +115,8 @@ model: Claude Sonnet 4
 - 日本語の業務名・プロセス名を英語に翻訳し、小文字で記述する
 - 複数単語の場合はアンダースコア（`_`）で区切る
 - 動詞+名詞の形式を推奨（例: `process_payment`, `validate_input`）
-- 例: `docs/feature/order_management/order_acceptance_activity.d2`
-- 例: `docs/feature/user_registration/account_validation_activity.d2`
+- 例: `docs/workflow/order_management/order_acceptance_activity.d2`
+- 例: `docs/workflow/user_registration/account_validation_activity.d2`
 
 参考情報
 -------------------------

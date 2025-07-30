@@ -78,6 +78,7 @@ model: Claude Sonnet 4
 - アクター間の相互作用の時系列を無視した図を作成しないこと
 - `near`は使用しないこと
 - 抽象化のレベルを混在させないこと（詳細度を一貫させる）
+- 出力内容にオプションの設定値などを記載した余計なコメントは含めない
 
 出力フォーマット
 -------------------------
@@ -89,7 +90,7 @@ model: Claude Sonnet 4
 
 ### ファイル配置ルール
 
-- 出力ファイル: `docs/feature/{業務(英語小文字、アンダースコア区切り)}/{プロセス(英語小文字、アンダースコア区切り)}_sequence.d2`
+- 出力ファイル: `docs/workflow/{業務プロセス(英語小文字、アンダースコア区切り)}_sequence.d2`
 - ディレクトリが存在しない場合は作成する
 
 ### ファイル名の命名規則
@@ -97,8 +98,8 @@ model: Claude Sonnet 4
 - 日本語の業務名・プロセス名を英語に翻訳し、小文字で記述する
 - 複数単語の場合はアンダースコア（`_`）で区切る
 - 動詞+名詞の形式を推奨（例: `process_payment`, `validate_input`）
-- 例: `docs/feature/order_management/order_acceptance_sequence.d2`
-- 例: `docs/feature/user_registration/email_verification_sequence.d2`
+- 例: `docs/workflow/order_management_sequence.d2`
+- 例: `docs/workflow/issue_management_sequence.d2`
 
 参考情報
 -------------------------
