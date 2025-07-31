@@ -2,7 +2,7 @@
 mode: agent
 model: Claude Sonnet 4
 ---
-問題分析
+問題分析(β版)
 =========================
 
 役割

@@ -2,7 +2,7 @@
 mode: agent
 model: Claude Sonnet 4
 ---
-改善提案
+改善提案(β版)
 =========================
 
 役割

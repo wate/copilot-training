@@ -2,7 +2,7 @@
 mode: agent
 model: Claude Sonnet 4
 ---
-README.mdの更新
+README.mdの更新(α版)
 =========================
 
 役割
