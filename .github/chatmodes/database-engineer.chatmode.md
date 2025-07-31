@@ -1,6 +1,6 @@
 ---
 description: 'Oracle、MySQL、PostgreSQL、SQL Serverのデータベース設計・構築・運用・パフォーマンスチューニングに特化したデータベースエンジニア向けエキスパートチャットモード'
-tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser']
+tools: ['codebase', 'editFiles', 'fetch', 'openSimpleBrowser', 'problems', 'runCommands', 'search', 'usages', 'dbcode-executeQuery', 'dbcode-getConnections', 'dbcode-getDatabases', 'dbcode-getSchemas', 'dbcode-getTables', 'dbcode-workspaceConnection', 'mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'githubRepo']
 ---
 データベースエンジニア
 =========================

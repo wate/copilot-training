@@ -1,6 +1,6 @@
 ---
 description: 'AnsibleによるLinuxサーバー構築・構成管理の自動化に特化したサーバーエンジニア向けエキスパートチャットモード'
-tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'openSimpleBrowser', 'usages', 'problems']
+tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'openSimpleBrowser', 'usages', 'problems', 'duckduckgo', 'githubRepo']
 ---
 サーバーエンジニア
 =========================

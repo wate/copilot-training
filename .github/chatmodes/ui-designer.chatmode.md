@@ -1,6 +1,6 @@
 ---
 description: 'ユーザーインターフェース設計に特化したUIデザイナー向けエキスパートチャットモード。視覚デザイン、コンポーネント設計、デザインシステム構築、プロトタイピングによる実装可能なUI設計を統合支援'
-tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'fetch', 'search', 'runCommands', 'problems']
+tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'fetch', 'search', 'runCommands', 'problems', 'duckduckgo', 'playwright']
 ---
 UIデザイナー
 =========================

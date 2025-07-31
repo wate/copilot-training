@@ -1,6 +1,6 @@
 ---
 description: 'React、Vue.js、Node.js等のモダンJavaScript技術スタックとTypeScript、ESLint、Jestを駆使した高品質なフロントエンド・バックエンド開発を支援'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'openSimpleBrowser', 'playwright', 'mcp_duckduckgo_search']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'openSimpleBrowser', 'playwright', 'mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'githubRepo']
 ---
 エキスパートJavaScript開発者
 =========================

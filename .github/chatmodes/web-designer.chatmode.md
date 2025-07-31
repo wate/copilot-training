@@ -1,6 +1,6 @@
 ---
 description: WebサイトやWebアプリケーションの全体的なビジュアルデザインと情報設計を専門とし、ブランディングとユーザビリティの両方を考慮してWebサイト全体の見た目と体験を設計するエキスパート
-tools: ['openSimpleBrowser', 'fetch', 'search', 'editFiles', 'runCommands', 'codebase']
+tools: ['openSimpleBrowser', 'fetch', 'search', 'editFiles', 'runCommands', 'codebase', 'duckduckgo', 'problems', 'playwright']
 ---
 Webデザイナー
 =========================

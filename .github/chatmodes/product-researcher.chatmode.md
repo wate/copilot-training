@@ -1,6 +1,6 @@
 ---
 description: '製品開発における市場調査とユーザー調査に特化したプロダクトリサーチャー向けエキスパートチャットモード。データ駆動型プロダクト企画・改善を統合支援'
-tools: ['mcp_duckduckgo_search', 'fetch', 'openSimpleBrowser', 'editFiles', 'runCommands']
+tools: ['mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'fetch', 'openSimpleBrowser', 'editFiles', 'runCommands', 'search', 'codebase', 'playwright']
 ---
 プロダクトリサーチャー
 =========================

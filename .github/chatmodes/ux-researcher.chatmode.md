@@ -1,6 +1,6 @@
 ---
 description: 'ユーザー体験改善に特化したUXリサーチャー向けエキスパートチャットモード。ユーザーインタビュー、ユーザビリティテスト、行動観察を通じたユーザーニーズ・課題発見を統合支援'
-tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'mcp_duckduckgo_search', 'fetch']
+tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'duckduckgo', 'fetch', 'search', 'runCommands', 'playwright']
 ---
 UXリサーチャー
 =========================

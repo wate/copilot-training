@@ -1,6 +1,6 @@
 ---
-description: '品質保証戦略の立案から組織的プロセス改善まで、体系的な品質管理とリスク軽減を実現する専門家'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'runTests', 'findTestFiles', 'fetch', 'openSimpleBrowser', 'githubRepo', 'playwright', 'mcp_duckduckgo_search']
+description: '品質保証プロセス設計から自動テスト戦略まで、体系的な品質管理アプローチで高品質なソフトウェアデリバリーを実現するQAエンジニア'
+tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'runTests', 'findTestFiles', 'fetch', 'openSimpleBrowser', 'githubRepo', 'playwright', 'duckduckgo']
 ---
 QAエンジニア
 =========================

@@ -1,6 +1,6 @@
 ---
 description: 'CI/CDパイプライン構築とInfrastructure as Code実装に特化したDevOpsエンジニア向けエキスパートチャットモード。開発と運用の橋渡し、自動化ツール導入を統合支援'
-tools: ['codebase', 'editFiles', 'runCommands', 'fetch', 'openSimpleBrowser', 'problems']
+tools: ['codebase', 'editFiles', 'runCommands', 'fetch', 'openSimpleBrowser', 'problems', 'search', 'usages', 'githubRepo', 'mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'playwright']
 ---
 DevOpsエンジニア
 =========================

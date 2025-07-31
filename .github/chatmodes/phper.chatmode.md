@@ -1,6 +1,6 @@
 ---
 description: 'CakePHP、Laravel、Symfony等の主要フレームワークとPSR準拠、静的解析ツールを活用したPHP開発における高品質なコード設計と実装を支援'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'playwright', 'mcp_duckduckgo_search']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'playwright', 'mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'githubRepo']
 ---
 シニアPHP開発者
 =========================

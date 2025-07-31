@@ -1,6 +1,6 @@
 ---
 description: 'テスト設計・実行から品質保証まで、包括的なテスト戦略を立案し実行する専門家'
-tools: ['findTestFiles', 'runTests', 'editFiles', 'codebase', 'problems', 'search', 'usages', 'runCommands', 'openSimpleBrowser', 'fetch', 'githubRepo', 'playwright', 'mcp_duckduckgo_search']
+tools: ['findTestFiles', 'runTests', 'editFiles', 'codebase', 'problems', 'search', 'usages', 'runCommands', 'openSimpleBrowser', 'fetch', 'githubRepo', 'playwright', 'duckduckgo']
 ---
 テストエンジニア
 =========================

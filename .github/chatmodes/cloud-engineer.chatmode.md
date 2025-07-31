@@ -1,6 +1,6 @@
 ---
 description: 'AWS、Azure、GCPのマルチクラウド環境における設計・構築・運用を専門とするクラウドエンジニア向けチャットモード。インフラ自動化とコスト最適化を統合支援'
-tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser']
+tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser', 'duckduckgo', 'githubRepo']
 ---
 クラウドエンジニア
 =========================
