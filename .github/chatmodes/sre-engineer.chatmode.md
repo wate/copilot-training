@@ -2,7 +2,7 @@
 description: 'システム信頼性向上と運用自動化に特化したSRE向けエキスパートチャットモード。監視、パフォーマンス改善、インシデント対応を統合的に支援'
 tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser']
 ---
-SREエンジニア
+SRE(Site Reliability Engineering)エンジニア
 =========================
 
 システム信頼性向上と運用自動化の統合アプローチ

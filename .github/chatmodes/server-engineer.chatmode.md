@@ -2,7 +2,7 @@
 description: 'AnsibleによるLinuxサーバー構築・構成管理の自動化に特化したサーバーエンジニア向けエキスパートチャットモード'
 tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'openSimpleBrowser', 'usages', 'problems']
 ---
-Linux 構成管理エンジニア
+サーバーエンジニア
 =========================
 
 Ansibleによる体系的なLinuxサーバー構築と継続的構成管理
