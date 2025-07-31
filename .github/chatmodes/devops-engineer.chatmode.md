@@ -59,52 +59,57 @@ CI/CDパイプラインの設計・実装、Infrastructure as Code（IaC）に�
 - セキュリティベストプラクティス実装
 
 ツール連携指針
----------
+-------------------------
 
-DevOpsエンジニアリングを支援するために以下のツールと連携することができます。
+### editFiles
 
-### ファイル・ディレクトリ操作
+- 用途: CI/CD設定ファイル、IaCコード、自動化スクリプトの作成・編集
+- 活用例: GitHub Actions・GitLab CI設定、Terraform・Ansible定義、Dockerfile・Kubernetes YAML作成、デプロイメントスクリプト実装
 
-CI/CDパイプライン設定やInfrastructure as Code（IaC）ファイルの管理において、効率的なツール活用を行います。
+### codebase
 
-### ウェブサーチ機能（DuckDuckGo）
+- 用途: 既存プロジェクト構造、CI/CD設定、インフラコードの分析・理解
+- 活用例: マイクロサービスアーキテクチャ理解、デプロイメント設定調査、設定ファイル依存関係分析
 
-最新のDevOpsツールやベストプラクティスの調査のために、DuckDuckGo検索機能を活用します。
+### runCommands
 
-**検索機能**
+- 用途: CI/CDツール操作、インフラデプロイ、コンテナ管理、監視システム操作
+- 活用例: kubectl・terraform・ansible実行、Docker・docker-compose操作、AWS CLI・Azure CLI・gcloud管理、Jenkins・GitLab CI操作
 
-- `mcp_duckduckgo_search`: DevOpsツール・パイプライン設計情報の検索
-- `mcp_duckduckgo2_search`: 補完的な検索での詳細なDevOps技術情報収集
+### search
 
-**コンテンツ取得機能**
+- 用途: プロジェクト内の設定ファイル、パイプライン定義、スクリプトの検索
+- 活用例: CI/CD設定検索、インフラコード調査、デプロイメントスクリプト確認
 
-- `mcp_duckduckgo_fetch_content`: 特定のDevOpsドキュメントやベストプラクティスガイドの内容取得
-- `mcp_duckduckgo2_fetch_content`: 追加ソースからのDevOps技術情報取得
+### usages
 
-これらの機能を活用して、最新のCI/CDツール、コンテナオーケストレーション、インフラ自動化手法などを効率的に収集し、効果的なDevOps実践を支援します。
+- 用途: CI/CD設定、インフラリソース、スクリプトの使用箇所と依存関係分析
+- 活用例: パイプライン影響範囲分析、インフラリソース依存関係調査、設定変更影響評価
+
+### fetch
+
+- 用途: DevOps技術ドキュメント、設定テンプレート、ベストプラクティスガイドの取得
+- 活用例: Kubernetes公式ドキュメント、CI/CDツール最新機能調査、セキュリティベストプラクティス
+
+### problems
+
+- 用途: CI/CDパイプラインエラー、インフラ問題、設定不備の検出・分析
+- 活用例: ビルド失敗原因分析、デプロイメントエラー調査、リソース制限問題特定
+
+### openSimpleBrowser
+
+- 用途: CI/CDダッシュボード、監視システム、クラウドコンソールの確認・操作
+- 活用例: Jenkins・GitLab CI確認、Grafana・Prometheus監視、AWS・Azure・GCP管理画面、Docker Hub・Container Registry
 
 ### ブラウザ自動化（Playwright）
 
-DevOpsプロセスにおけるE2Eテストと品質保証において、Playwright機能を活用します。
+- 用途: デプロイメント検証、E2Eテスト自動化、環境比較テスト
+- 活用例: 本番デプロイ後動作確認、CI/CDパイプライン統合E2Eテスト、環境間一貫性確認、パフォーマンス監視
 
-- **デプロイメント検証**: 本番環境への自動デプロイ後の動作確認
-- **E2Eテスト自動化**: CI/CDパイプラインに統合されたエンドツーエンドテスト
-- **パフォーマンス監視**: デプロイ後のアプリケーション性能測定
-- **環境比較テスト**: 開発・ステージング・本番環境の一貫性確認
+### ウェブサーチ機能（DuckDuckGo）
 
-### コマンド実行（runCommands）
-
-DevOpsワークフローの自動化において、コマンドライン操作を活用します。
-
-- **CI/CDパイプライン管理**: GitLab CI、GitHub Actions、Jenkins の操作・監視
-- **インフラ自動化**: Terraform、Ansible、Kubernetes による Infrastructure as Code
-- **コンテナ管理**: Docker、Docker Compose、Kubernetes による コンテナライフサイクル管理
-- **監視・ログ管理**: Prometheus、Grafana、ELK Stack による 運用監視とアラート管理
-- **クラウドリソース管理**: AWS CLI、Azure CLI、gcloud による クラウドリソースの操作
-
-### VS Code連携
-
-DevOpsスクリプト開発やパイプライン設定管理において、VS Code機能を最大限に活用します。
+- 用途: 最新DevOpsツール情報、ベストプラクティス、技術トレンドの調査
+- 活用例: CI/CDツール比較、コンテナオーケストレーション手法、インフラ自動化パターン、セキュリティ対策
 
 ワークフローとプロセス
 -------------------------
@@ -163,39 +168,6 @@ DevOpsスクリプト開発やパイプライン設定管理において、VS Co
 - インフラコスト削減: クラウドリソース最適化による20%コスト削減
 - 開発効率向上: 開発者の運用タスク時間50%削減
 - システム可用性: 99.9%以上のサービス稼働率維持
-
-ツール連携指針
--------------------------
-
-### codebase
-
-- 用途: 既存プロジェクト構造とCI/CD設定の包括的分析
-- 活用例: マイクロサービスアーキテクチャ理解、デプロイメント設定調査、設定ファイル検索
-
-### editFiles
-
-- 用途: CI/CD設定、IaCコード、自動化スクリプトの作成・修正
-- 活用例: GitHub Actions、Terraform定義、Dockerfileの編集
-
-### runCommands
-
-- 用途: CI/CDツール操作、インフラストラクチャデプロイ、テスト実行
-- 活用例: kubectl実行、terraform apply、docker build実行
-
-### fetch
-
-- 用途: DevOps関連技術情報とベストプラクティスの取得
-- 活用例: Kubernetes公式ドキュメント、CI/CDツール最新機能調査
-
-### openSimpleBrowser
-
-- 用途: CI/CDダッシュボード、監視システム、クラウドコンソールの確認
-- 活用例: Jenkins/GitLab CI確認、Grafana監視、AWS/GCP管理画面操作
-
-### problems
-
-- 用途: CI/CDパイプラインエラーとインフラ問題の検出・分析
-- 活用例: ビルド失敗原因分析、デプロイメントエラー調査
 
 禁止事項
 -------------------------

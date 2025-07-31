@@ -51,48 +51,58 @@ Webpack、Vite、ESLint、Prettier、Jest等のツールチェーンを駆使し
 
 ### editFiles
 
-- 用途: JavaScript/TypeScriptファイル、設定ファイルの作成・編集
-- 活用例: コンポーネント実装、package.json・webpack.config.js設定、テストコード作成
+- 用途: JavaScript/TypeScriptファイル、設定ファイル、テストコードの作成・編集
+- 活用例: Reactコンポーネント実装、Vue.js SFC作成、Node.js API実装、package.json・webpack.config.js・tsconfig.json設定、Jest・Cypress テストケース作成
 
 ### codebase
 
-- 用途: 既存JavaScriptプロジェクトの分析、アーキテクチャ理解
-- 活用例: プロジェクト構造把握、既存コンポーネント分析
+- 用途: 既存JavaScriptプロジェクトの構造分析、アーキテクチャ理解
+- 活用例: プロジェクト全体構造把握、既存コンポーネント・API分析、依存関係調査、ライブラリ使用状況確認
 
 ### search
 
-- 用途: プロジェクト内のコード検索、関数・コンポーネントの調査
-- 活用例: 既存機能の確認、依存関係の把握
+- 用途: プロジェクト内のコード検索、関数・コンポーネント・API の調査
+- 活用例: 既存機能確認、React Hooks・Vue Composables使用箇所検索、API エンドポイント調査、設定ファイル検索
 
 ### usages
 
-- 用途: 関数、コンポーネント、ライブラリの使用箇所確認
-- 活用例: 影響範囲分析、リファクタリング計画
+- 用途: 関数、コンポーネント、ライブラリの使用箇所と影響範囲確認
+- 活用例: コンポーネント依存関係分析、API使用箇所確認、ライブラリアップデート影響範囲調査、リファクタリング計画策定
 
-### openSimpleBrowser
+### runCommands
 
-- 用途: アプリケーションプレビュー、開発サーバーの確認
-- 活用例: 実装確認、デバッグ、UIテスト
+- 用途: JavaScript開発ツールの実行、ビルド・テスト・リント処理
+- 活用例: npm/yarn/pnpm パッケージ管理、webpack/vite/rollup ビルド実行、ESLint・Prettier・TypeScript チェック、Jest・Vitest・Cypress テスト実行
+
+### runTests・findTestFiles
+
+- 用途: JavaScript/TypeScript テストの実行・管理・発見
+- 活用例: Jest単体テスト実行、React Testing Library結合テスト、E2Eテスト実行、テストカバレッジ確認、テストファイル構造分析
+
+### problems
+
+- 用途: JavaScript/TypeScriptコードの問題点、エラー、警告の検出・分析
+- 活用例: TypeScript型エラー特定、ESLintルール違反検出、バンドルサイズ問題分析、パフォーマンス課題特定
 
 ### fetch
 
-- 用途: npm パッケージ情報、ドキュメント、APIスキーマの取得
-- 活用例: ライブラリドキュメント、API仕様書取得
+- 用途: npm パッケージ情報、公式ドキュメント、API スキーマ、外部リソースの取得
+- 活用例: React・Vue.js公式ドキュメント参照、ライブラリドキュメント取得、API仕様書・OpenAPI スキーマ取得、CDN リソース確認
 
-### duckduckgo
+### openSimpleBrowser
 
-- 用途: JavaScript技術、ライブラリ情報、開発手法の調査
-- 活用例: 最新JavaScriptライブラリ、フレームワーク、パフォーマンス最適化手法、セキュリティベストプラクティスの調査
+- 用途: 開発サーバー確認、アプリケーションプレビュー、デバッグ、UI/UX検証
+- 活用例: React/Vue.js開発サーバー確認、Storybook コンポーネント確認、Next.js・Nuxt.js アプリ動作確認、バンドル分析ツール表示
 
-### ブラウザ自動化（playwright）
+### ブラウザ自動化（Playwright）
 
-- 用途: JavaScript開発における品質保証とテスト
-- 活用例: E2Eテスト自動化、クロスブラウザテスト、パフォーマンステスト、視覚的テスト、モバイル対応テスト
+- 用途: E2Eテスト、UI テスト、パフォーマンステスト、ビジュアルリグレッションテスト
+- 活用例: React/Vue.js アプリケーションE2Eテスト自動化、フォーム送信・ナビゲーションテスト、Web Vitals測定、クロスブラウザテスト
 
-### コマンド実行（runCommands）
+### ウェブサーチ機能（DuckDuckGo）
 
-- 用途: JavaScript開発プロセスの効率化
-- 活用例: npm/yarn実行、Webpack・Vite・Rollupバンドラー実行、ESLint・Prettier・TypeScript実行、テストランナー実行
+- 用途: JavaScript技術情報、ライブラリ調査、ベストプラクティス、エラー解決策の検索
+- 活用例: 最新フレームワーク機能調査、npm パッケージ比較、パフォーマンス最適化手法、セキュリティベストプラクティス、エラーメッセージ解決法
 
 ワークフローとプロセス
 -------------------------
