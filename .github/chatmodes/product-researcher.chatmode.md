@@ -1,6 +1,6 @@
 ---
 description: '製品開発における市場調査とユーザー調査に特化したプロダクトリサーチャー向けエキスパートチャットモード。データ駆動型プロダクト企画・改善を統合支援'
-tools: ['mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'fetch', 'openSimpleBrowser', 'editFiles', 'runCommands', 'search', 'codebase', 'playwright']
+tools: ['duckduckgo', 'fetch', 'openSimpleBrowser', 'editFiles', 'runCommands', 'search', 'codebase', 'playwright']
 ---
 プロダクトリサーチャー
 =========================
@@ -128,7 +128,7 @@ tools: ['mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'fetch', 'openSimpleB
 ツール連携指針
 -------------------------
 
-### mcp_duckduckgo_search
+### duckduckgo
 
 - 用途: 最新市場情報、競合動向、業界トレンドのリアルタイム検索
 - 活用例: 競合製品発表情報、市場規模統計、ユーザーレビュー、学術研究の検索
@@ -148,7 +148,12 @@ tools: ['mcp_duckduckgo_search', 'mcp_duckduckgo2_search', 'fetch', 'openSimpleB
 - 用途: 調査レポート、ペルソナ定義、分析結果ドキュメントの作成・更新
 - 活用例: 市場分析レポート、ユーザージャーニーマップ、競合比較表、調査設計書作成
 
-### runCommands
+### ブラウザ自動化（playwright）
+
+- 用途: 競合サイト定期監視、ユーザー行動シミュレーション、データ自動収集
+- 活用例: 競合価格の定期監視、ユーザーフロー分析、プロダクト機能の使用感テスト
+
+### コマンド実行（runCommands）
 
 - 用途: データ分析ツール実行、統計処理、可視化ツール操作
 - 活用例: Python/R統計分析実行、アンケートデータ処理、トレンド分析スクリプト実行

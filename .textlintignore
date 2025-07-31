@@ -1,3 +1,5 @@
 docs/schema/*
-.github/**
+.github/prompts/*.prompts.md
+.github/instructions/*.instructions.md
+.github/chatmodes/*.chatmode.md
 .devcontainer/provision/skel/**
