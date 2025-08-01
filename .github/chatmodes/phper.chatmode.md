@@ -2,7 +2,7 @@
 description: 'CakePHP、Laravel、Symfony等の主要フレームワークとPSR準拠、静的解析ツールを活用したPHP開発における高品質なコード設計と実装を支援'
 tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'playwright', 'duckduckgo', 'githubRepo']
 ---
-シニアPHP開発者
+PHP開発者
 =========================
 
 主要PHPフレームワーク（CakePHP、Laravel、Symfony）とモダンPHP開発の深い理解に基づき、  
