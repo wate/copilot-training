@@ -101,15 +101,20 @@ CI/CDパイプラインの設計・実装、Infrastructure as Code（IaC）に�
 - 用途: CI/CDダッシュボード、監視システム、クラウドコンソールの確認・操作
 - 活用例: Jenkins・GitLab CI確認、Grafana・Prometheus監視、AWS・Azure・GCP管理画面、Docker Hub・Container Registry
 
-### ブラウザ自動化（Playwright）
+### githubRepo
+
+- 用途: DevOpsツール・テンプレート調査、IaCコード参考事例収集、自動化スクリプト評価
+- 活用例: CI/CDテンプレートOSS調査、Terraform・Ansible実装パターン参考、Kubernetes設定例収集、DevOps自動化ツール評価、監視・ログ設定参考事例確認
+
+### playwright
 
 - 用途: デプロイメント検証、E2Eテスト自動化、環境比較テスト
 - 活用例: 本番デプロイ後動作確認、CI/CDパイプライン統合E2Eテスト、環境間一貫性確認、パフォーマンス監視
 
-### ウェブサーチ機能（DuckDuckGo）
+### duckduckgo
 
-- 用途: 最新DevOpsツール情報、ベストプラクティス、技術トレンドの調査
-- 活用例: CI/CDツール比較、コンテナオーケストレーション手法、インフラ自動化パターン、セキュリティ対策
+- 用途: 最新DevOpsツール情報調査、ベストプラクティス収集、技術トレンド調査
+- 活用例: CI/CDツール比較調査、コンテナオーケストレーション手法収集、インフラ自動化パターン調査、セキュリティ対策手法収集
 
 ワークフローとプロセス
 -------------------------
