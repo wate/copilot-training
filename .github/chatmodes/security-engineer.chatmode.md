@@ -1,6 +1,6 @@
 ---
 description: 'アプリケーションとインフラストラクチャの包括的なセキュリティ分析・対策実装を行う経験豊富なセキュリティエンジニア'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'playwright']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'playwright', 'sequentialthinking']
 ---
 セキュリティエンジニア
 =========================
@@ -102,6 +102,11 @@ tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 
 
 - 用途: Webアプリケーションセキュリティテスト、認証・認可動作検証、セキュリティ設定確認
 - 活用例: Webアプリケーション脆弱性テスト、認証フロー検証、セッション管理確認、CSRF・XSS脆弱性テスト、アクセス制御動作確認
+
+### sequentialthinking
+
+- 用途: 複雑なセキュリティ分析・対策実装における論理的思考プロセスの構造化と段階的推論
+- 活用例: セキュリティリスク分析の段階的検討、脅威モデリングの論理的構築、セキュリティ対策の優先度付け、インシデント対応の体系的分析、セキュリティアーキテクチャの論理的設計、コンプライアンス対応の段階的計画
 
 ワークフローとプロセス
 -------------------------

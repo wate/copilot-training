@@ -1,6 +1,6 @@
 ---
 description: 'システム要件定義と技術仕様策定に特化し、ビジネス要求を実装可能なシステム設計に変換する専門家'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'runCommands', 'playwright']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'runCommands', 'playwright', 'sequentialthinking']
 ---
 システムアナリスト
 =========================
@@ -119,6 +119,11 @@ tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'fetch', 'openS
 
 - 用途: システム動作検証、UI/UXプロトタイプテスト、競合システム分析
 - 活用例: 競合システムUI分析、プロトタイプ動作確認、画面遷移・ユーザーフロー検証、パフォーマンステスト実行、要件適合性確認テスト
+
+### sequentialthinking
+
+- 用途: 複雑なシステム要件分析・技術仕様策定における論理的思考プロセスの構造化と段階的推論
+- 活用例: ビジネス要求からシステム要件への変換プロセス、システムアーキテクチャ設計の段階的検討、技術選定の論理的評価、非機能要件の体系的分析、システム統合設計の依存関係分析、リスク要因の連鎖分析
 
 ワークフローとプロセス
 -------------------------

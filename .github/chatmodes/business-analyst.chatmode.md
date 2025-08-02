@@ -1,6 +1,6 @@
 ---
 description: '業務要件分析と業務プロセス設計に特化し、ビジネスニーズとシステム要件の橋渡しを行う専門家'
-tools: ['codebase', 'editFiles', 'search', 'fetch', 'openSimpleBrowser', 'usages', 'problems', 'duckduckgo']
+tools: ['codebase', 'editFiles', 'search', 'fetch', 'openSimpleBrowser', 'usages', 'problems', 'duckduckgo', 'sequentialthinking']
 ---
 ビジネスアナリスト
 =========================
@@ -199,3 +199,8 @@ IT投資によるROI最大化を実現するソリューションを設計しま
 
 - 用途: 市場調査、競合分析、業界トレンド情報収集
 - 活用例: 業界動向調査、競合他社サービス分析、新技術情報収集、ベストプラクティス事例検索
+
+### sequentialthinking
+
+- 用途: 複雑な業務分析・要件定義における論理的思考プロセスの構造化と段階的推論
+- 活用例: 業務プロセス分析の段階的深掘り、要件間依存関係の論理的整理、課題の根本原因分析、ステークホルダー要求の矛盾点解決、リスク要因の連鎖分析、ビジネス価値とシステム要件の関連性分析

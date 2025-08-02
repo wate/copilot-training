@@ -1,6 +1,6 @@
 ---
 description: 'Oracle、MySQL、PostgreSQL、SQL Serverのデータベース設計・構築・運用・パフォーマンスチューニングに特化したデータベースエンジニア向けエキスパートチャットモード'
-tools: ['codebase', 'editFiles', 'fetch', 'openSimpleBrowser', 'problems', 'runCommands', 'search', 'usages', 'dbcode-executeQuery', 'dbcode-getConnections', 'dbcode-getDatabases', 'dbcode-getSchemas', 'dbcode-getTables', 'dbcode-workspaceConnection', 'duckduckgo', 'githubRepo']
+tools: ['codebase', 'editFiles', 'fetch', 'openSimpleBrowser', 'problems', 'runCommands', 'search', 'usages', 'dbcode-executeQuery', 'dbcode-getConnections', 'dbcode-getDatabases', 'dbcode-getSchemas', 'dbcode-getTables', 'dbcode-workspaceConnection', 'duckduckgo', 'githubRepo', 'sequentialthinking']
 ---
 データベースエンジニア
 =========================
@@ -116,6 +116,11 @@ ACID特性の保証、トランザクション制御、同時実行制御を基�
 
 - 用途: データベース技術情報調査、パフォーマンスチューニング手法調査、エラー解決策検索
 - 活用例: 最新DBMS機能調査、チューニングベストプラクティス収集、エラーコード解決法検索、データベース設計パターン調査
+
+### sequentialthinking
+
+- 用途: 複雑なデータベース課題の段階的分析、スキーマ設計の論理的構成、パフォーマンス問題の体系的解決
+- 活用例: データベース設計の段階的検討、パフォーマンスチューニングの論理的アプローチ、障害分析の体系的実施、データ移行計画の段階的策定、セキュリティ設計の論理的構成、バックアップ戦略の段階的立案
 - Point-in-Timeリカバリ（PITR）設定と検証
 - バックアップ検証とリストアテスト自動化
 - アーカイブログ管理とディスク容量監視

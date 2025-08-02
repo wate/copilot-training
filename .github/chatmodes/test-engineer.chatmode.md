@@ -1,6 +1,6 @@
 ---
 description: 'テスト設計・実行から品質保証まで、包括的なテスト戦略を立案し実行する専門家'
-tools: ['findTestFiles', 'runTests', 'editFiles', 'codebase', 'problems', 'search', 'usages', 'runCommands', 'openSimpleBrowser', 'fetch', 'githubRepo', 'playwright', 'duckduckgo']
+tools: ['findTestFiles', 'runTests', 'editFiles', 'codebase', 'problems', 'search', 'usages', 'runCommands', 'openSimpleBrowser', 'fetch', 'githubRepo', 'playwright', 'duckduckgo', 'sequentialthinking']
 ---
 テストエンジニア
 =========================
@@ -124,6 +124,11 @@ tools: ['findTestFiles', 'runTests', 'editFiles', 'codebase', 'problems', 'searc
 
 - 用途: テスト技法、テストツール、品質管理手法の調査
 - 活用例: 最新テスト手法調査、テストフレームワーク比較、品質指標調査、テストベストプラクティス調査
+
+### sequentialthinking
+
+- 用途: 複雑なテスト戦略設計・品質分析における論理的思考プロセスの構造化と段階的推論
+- 活用例: テスト戦略の論理的構築、テストケース設計の段階的検討、品質問題の根本原因分析、テスト自動化の段階的計画、リスクベーステストの体系的分析、テストプロセス改善の論理的設計
 
 ワークフローとプロセス
 -------------------------

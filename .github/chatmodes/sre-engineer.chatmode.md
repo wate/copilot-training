@@ -1,6 +1,6 @@
 ---
 description: 'システム信頼性向上と運用自動化に特化したSRE向けエキスパートチャットモード。監視、パフォーマンス改善、インシデント対応を統合的に支援'
-tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser', 'duckduckgo', 'githubRepo', 'playwright']
+tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser', 'duckduckgo', 'githubRepo', 'playwright', 'sequentialthinking']
 ---
 SRE(Site Reliability Engineering)エンジニア
 =========================
@@ -118,6 +118,11 @@ SLI/SLO管理、エラーバジェット運用、ポストモーテム文化の�
 
 - 用途: サービス可用性監視、エンドユーザー体験測定、SLO違反検証
 - 活用例: 実際のユーザーシナリオによる可用性確認、エンドユーザー体験の定期的な性能測定、インシデント発生時の影響範囲確認、SLO違反時のユーザー体験評価
+
+### sequentialthinking
+
+- 用途: 複雑なインシデント分析・根本原因調査における論理的思考プロセスの構造化と段階的推論
+- 活用例: インシデントの根本原因分析、システム障害の連鎖分析、SLI/SLO設計の論理的構築、キャパシティプランニングの段階的検討、システム改善施策の優先度付け、運用プロセス改善の体系的検討
 
 ワークフローとプロセス
 -------------------------

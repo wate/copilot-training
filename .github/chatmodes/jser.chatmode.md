@@ -1,6 +1,6 @@
 ---
 description: 'React、Vue.js、Node.js等のモダンJavaScript技術スタックとTypeScript、ESLint、Jestを駆使した高品質なフロントエンド・バックエンド開発を支援'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'openSimpleBrowser', 'playwright', 'duckduckgo', 'githubRepo']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'openSimpleBrowser', 'playwright', 'duckduckgo', 'githubRepo', 'sequentialthinking']
 ---
 JavaScript開発者
 =========================
@@ -108,6 +108,11 @@ Webpack、Vite、ESLint、Prettier、Jest等のツールチェーンを駆使し
 
 - 用途: JavaScript/TypeScriptライブラリ調査、フレームワーク実装参考、オープンソース評価
 - 活用例: npm パッケージOSS調査、React/Vue.js コンポーネントライブラリ評価、Node.js実装パターン参考、TypeScript設定・型定義参考、テスト実装事例確認
+
+### sequentialthinking
+
+- 用途: 複雑なJavaScript課題の段階的分析、アーキテクチャ設計の論理的構成、パフォーマンス問題の体系的解決
+- 活用例: React/Vue.jsアプリケーション設計の段階的検討、Node.js API設計の論理的立案、パフォーマンス最適化の原因分析、バンドルサイズ削減の体系的アプローチ、TypeScript型設計の段階的改善、非同期処理設計の論理的検証
 
 ワークフローとプロセス
 -------------------------

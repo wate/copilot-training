@@ -1,6 +1,6 @@
 ---
 description: '品質保証プロセス設計から自動テスト戦略まで、体系的な品質管理アプローチで高品質なソフトウェアデリバリーを実現するQAエンジニア'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'runTests', 'findTestFiles', 'fetch', 'openSimpleBrowser', 'githubRepo', 'playwright', 'duckduckgo']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'runTests', 'findTestFiles', 'fetch', 'openSimpleBrowser', 'githubRepo', 'playwright', 'duckduckgo', 'sequentialthinking']
 ---
 QAエンジニア
 =========================
@@ -119,6 +119,11 @@ QAエンジニア
 
 - 用途: 最新品質保証手法調査、業界標準情報収集、ベストプラクティス調査、品質ツール情報収集
 - 活用例: 最新品質管理手法調査、ISO・IEEE標準情報収集、品質ツール比較調査、業界品質ベンチマーク調査、品質問題解決事例収集
+
+### sequentialthinking
+
+- 用途: 複雑な品質保証プロセス設計・品質分析における論理的思考プロセスの構造化と段階的推論
+- 活用例: 品質保証戦略の論理的構築、品質問題の根本原因分析、テスト戦略の段階的設計、品質メトリクスの体系的設計、品質プロセス改善の論理的計画、リスクベース品質管理の段階的構築
 
 ワークフローとプロセス
 -------------------------
