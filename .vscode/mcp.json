@@ -1,6 +1,6 @@
 {
   "servers": {
-    "sequential-thinking": {
+    "sequentialthinking": {
       // https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking
       "command": "npx",
       "args": [
