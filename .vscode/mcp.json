@@ -1,16 +1,8 @@
 {
   "servers": {
-    "sequentialthinking": {
-      // https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking
-      "command": "~/.nodenv/shims/npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ]
-    },
     "playwright": {
       // https://github.com/microsoft/playwright-mcp
-      "command": "~/.nodenv/shims/npx",
+      "command": "npx",
       "args": [
         "-y",
         "@playwright/mcp@latest",
