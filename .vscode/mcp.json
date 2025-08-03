@@ -2,7 +2,7 @@
   "servers": {
     "sequentialthinking": {
       // https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking
-      "command": "npx",
+      "command": "~/.nodenv/shims/npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
@@ -10,7 +10,7 @@
     },
     "playwright": {
       // https://github.com/microsoft/playwright-mcp
-      "command": "npx",
+      "command": "~/.nodenv/shims/npx",
       "args": [
         "-y",
         "@playwright/mcp@latest",
@@ -19,11 +19,11 @@
       ]
     },
     "excel": {
-      // https://github.com/negokaz/excel-mcp-server
-      "command": "npx",
+      // https://github.com/haris-musa/excel-mcp-server/
+      "command": "uvx",
       "args": [
-        "-y",
-        "@negokaz/excel-mcp-server"
+        "excel-mcp-server",
+        "stdio"
       ],
     },
     "duckduckgo": {
