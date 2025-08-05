@@ -1,40 +1,15 @@
-# {シーケンス図のタイトル}
+# 経費申請承認業務のシーケンス図
 # =========================
-# 業務プロセス: {プロセス名}
+# 業務プロセス: 経費申請から承認・支払いまでの業務フロー
 
 ## レイアウトエンジンとテーマの定義
 ## -------------------------
 vars: {
   d2-config: {
-    ### Terminal theme code
-    ### @see https://d2lang.com/tour/layouts/#layout-engines
-    # layout-engine: {dagre|elk}
-    ### Terminal theme code
-    ### @see https://d2lang.com/tour/themes
-    # theme-id: 0
+    layout-engine: elk
+    theme-id: 0
   }
 }
-## Options
-## -------------------------
-### Direction
-# up / down / right / left
-### Shapes
-# rectangle / square / page / parallelogram / document
-# cylinder / queue / package / step / callout / stored_data
-# person / diamond / oval / circle / hexagon / cloud
-#### Special Shape
-# sequence_diagram / sql_table / class
-### Styles
-# opacity / stroke / stroke-width / stroke-dash / border-radius / font / font-size / font-color
-# bold / italic / underline / text-transform / root
-#### shape only
-# fill / fill-pattern / shadow / multiple
-#### rectangle / square only
-# 3D
-#### rectangles / ovals only
-# double-border
-#### connection only
-# animated
 
 ## シーケンス図の宣言
 ## -------------------------
@@ -43,37 +18,53 @@ shape: sequence_diagram
 ## スタイル定義
 ## -------------------------
 classes: {
-  actor_human: {
+  申請者: {
     shape: person
+    style: {
+      fill: lightblue
+    }
   }
-  actor_department: {
+  部門: {
     shape: rectangle
+    style: {
+      fill: lightgreen
+    }
   }
-  actor_system: {
+  システム: {
     shape: cylinder
-  }
-  message: {
     style: {
-      font-size: 12
+      fill: lightgray
     }
   }
-  operation: {
+  外部組織: {
+    shape: cloud
     style: {
-      font-size: 12
+      fill: lightyellow
     }
   }
-  receive: {
-    ## 明示的なレスポンスを表す
+  依頼: {
     style: {
       font-size: 12
+      stroke: blue
+    }
+  }
+  承認: {
+    style: {
+      font-size: 12
+      stroke: green
+    }
+  }
+  報告: {
+    style: {
+      font-size: 12
+      stroke: orange
       stroke-dash: 3
     }
   }
-  notify: {
-    ## 弱いレスポンスを表す
+  通知: {
     style: {
       font-size: 10
-      stroke-width: 1
+      stroke: gray
       stroke-dash: 5
     }
   }
@@ -81,146 +72,107 @@ classes: {
 
 ## アクターの定義
 ## -------------------------
-user: {
-  shape: person
-  label: "user"
-  class: actor_human
+申請者: {
+  label: "田中（申請者）"
+  class: 申請者
 }
-customer_support: {
-  label: "customer_support"
-  class: actor_department
+経理部: {
+  label: "経理部"
+  class: 部門
 }
-development: {
-  label: "development"
-  class: actor_department
+営業部長: {
+  label: "営業部長"
+  class: 申請者
 }
-system: {
-  label: "system"
-  class: actor_system
+経費管理システム: {
+  label: "経費管理システム"
+  class: システム
+}
+銀行: {
+  label: "取引銀行"
+  class: 外部組織
 }
 
 ## シーケンスの定義
 ## -------------------------
-### 最初のステップ
-first_step: {
-  label: "最初のステップ"
-  user -> customer_support: "依頼" {
-    label: "これやって"
-    class: message
+### 経費申請
+経費申請: {
+  label: "経費申請"
+  申請者 -> 経費管理システム: "経費申請書入力" {
+    label: "交通費 5,000円"
+    class: 依頼
   }
 
-  customer_support -> customer_support: "内容確認" {
-    label: "内容確認"
-  }
-  customer_support -> system: "チケット起票" {
-    class: operation
+  経費管理システム -> 営業部長: "承認依頼通知" {
+    label: "田中さんから経費申請"
+    class: 通知
   }
 
-  customer_support -> user: "受付通知" {
-    label: "わかりました！"
-    class: receive
+  営業部長 -> 経費管理システム: "申請内容確認" {
+    label: "内容チェック"
+    class: 依頼
+  }
+
+  営業部長 -> 経費管理システム: "承認" {
+    label: "承認します"
+    class: 承認
+  }
+
+  経費管理システム -> 申請者: "承認通知" {
+    label: "部長承認完了"
+    class: 通知
   }
 }
-### 次のステップ
-second_step: {
-  label: "次のステップ"
-  customer_support -> development: "依頼" {
-    label: "これやって"
-    class: message
+
+### 経理処理
+経理処理: {
+  label: "経理部での処理"
+  経費管理システム -> 経理部: "承認済み申請通知" {
+    label: "田中さんの経費申請"
+    class: 通知
   }
-  development -> system: "内容確認" {
-    class: operation
+
+  経理部 -> 経費管理システム: "内容確認" {
+    label: "領収書チェック"
+    class: 依頼
   }
-  development -> customer_support: "受付通知" {
-    label: "わかりました！"
-    class: receive
+
+  経理部 -> 経費管理システム: "支払処理登録" {
+    label: "支払予定日設定"
+    class: 依頼
   }
-}
-### 中間のステップ
-third_step: {
-  label: "中間ステップ"
-  development -> system: "ステータス更新" {
-    class: operation
-  }
-  system -> customer_support: "通知" {
-    label: "ステータス変更通知"
-    class: notify
-  }
-  customer_support -> user: "通知" {
-    label: "作業に着手しました"
-    class: message
-  }
-  development -> system: "進捗率更新" {
-    class: operation
-  }
-  system -> customer_support: "通知" {
-    label: "進捗率:25%"
-    class: notify
-  }
-  customer_support -> development: {
-    label: "既読"
-    class: notify
-  }
-  development -> system: "進捗率更新" {
-    class: operation
-  }
-  system -> customer_support: "通知" {
-    label: "進捗率:50%"
-    class: notify
-  }
-  customer_support -> development: {
-    label: "既読"
-    class: notify
-  }
-  development -> customer_support -> user: "進捗報告" {
-    label: "折り返し地点です"
-    class: message
-  }
-  customer_support -> development: {
-    label: "報告あげときました"
-    class: receive
-  }
-  development -> system: "進捗率更新" {
-    class: operation
-  }
-  system -> customer_support: "通知" {
-    label: "進捗率:75%"
-    class: notify
-  }
-  customer_support -> development: {
-    label: "既読"
-    class: notify
-  }
-  development -> system: "進捗率更新" {
-    class: operation
-  }
-  system -> customer_support: "通知" {
-    label: "進捗率:90%"
-    class: notify
-  }
-  development -> customer_support: "進捗通知" {
-    label: "もうすぐ終わりです"
-    class: message
-  }
-  customer_support -> development: {
-    label: "Good!"
-    class: notify
+
+  経理部 -> 申請者: "処理完了通知" {
+    label: "支払処理しました"
+    class: 報告
   }
 }
-last_step: {
-  label: "最後のステップ"
-  development -> system: "ステータス更新" {
-    class: operation
+
+### 支払処理
+支払処理: {
+  label: "銀行振込処理"
+  経理部 -> 銀行: "振込依頼" {
+    label: "田中への5,000円振込"
+    class: 依頼
   }
-  system -> customer_support: "ステータス更新通知" {
-    class: notify
+
+  銀行 -> 経理部: "振込完了通知" {
+    label: "振込処理完了"
+    class: 報告
   }
-  development -> customer_support -> user: "完了通知" {
-    label: "終わりました"
-    class: message
+
+  経理部 -> 経費管理システム: "支払完了登録" {
+    label: "ステータス更新"
+    class: 依頼
   }
-  user -> customer_support -> development: "受領通知" {
-    label: "ご苦労さまでした"
-    class: receive
+
+  経費管理システム -> 申請者: "支払完了通知" {
+    label: "5,000円をお振込みしました"
+    class: 通知
+  }
+
+  申請者 -> 経理部: "受領確認" {
+    label: "確認しました。ありがとうございます"
+    class: 報告
   }
 }

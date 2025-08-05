@@ -6,35 +6,10 @@
 ## -------------------------
 vars: {
   d2-config: {
-    ### レイアウトエンジン
-    ### @see https://d2lang.com/tour/layouts/#layout-engines
     layout-engine: dagre
-    ### テーマ
-    ### @see https://d2lang.com/tour/themes
     theme-id: 0
   }
 }
-## Options
-## -------------------------
-### Direction
-# up / down / right / left
-### Shapes
-# rectangle / square / page / parallelogram / document
-# cylinder / queue / package / step / callout / stored_data
-# person / diamond / oval / circle / hexagon / cloud
-#### Special Shape
-# sequence_diagram / sql_table / class
-### Styles
-# opacity / stroke / stroke-width / stroke-dash / border-radius / font / font-size / font-color
-# bold / italic / underline / text-transform / root
-#### shape only
-# fill / fill-pattern / shadow / multiple
-#### rectangle / square only
-# 3D
-#### rectangles / ovals only
-# double-border
-#### connection only
-# animated
 
 ## スタイル定義
 ## -------------------------
@@ -52,6 +27,14 @@ classes: {
     shape: diamond
     style: {
       fill: "#ffffcc"
+      stroke: "#333333"
+      font-size: 14
+    }
+  }
+  merge: {
+    shape: diamond
+    style: {
+      fill: "#e8f5e8"
       stroke: "#333333"
       font-size: 14
     }
@@ -76,9 +59,9 @@ classes: {
   fork_join: {
     shape: rectangle
     style: {
-      fill: "#333333"
+      fill: "#ffffff"
       stroke: "#333333"
-      height: 8
+      stroke-width: 3
       font-size: 14
     }
   }
@@ -95,21 +78,21 @@ classes: {
 
 ## スイムレーン定義（複数の担当者がいる場合）
 ## -------------------------
-# swimlane_user: {
-#   label: "ユーザー"
-#   style: {
-#     fill: "#f8f9fa"
-#     stroke: "#dee2e6"
-#   }
-# }
-#
-# swimlane_system: {
-#   label: "システム"
-#   style: {
-#     fill: "#e3f2fd"
-#     stroke: "#bbdefb"
-#   }
-# }
+user_lane: {
+  label: "ユーザー"
+  style: {
+    fill: "#f8f9fa"
+    stroke: "#dee2e6"
+  }
+}
+
+system_lane: {
+  label: "システム"
+  style: {
+    fill: "#e3f2fd"
+    stroke: "#bbdefb"
+  }
+}
 
 ## アクティビティ図の定義
 ## -------------------------
@@ -130,27 +113,33 @@ decision1: {
   label: "条件判断?"
 }
 
-# フォークノード（並行処理の開始）
-fork1: {
-  class: fork_join
+# マージノードの定義
+merge1: {
+  class: merge
   label: ""
 }
 
-# 並行アクティビティ
-parallel_activity1: {
-  class: activity
-  label: "並行活動1"
+# フォークノード（並行処理の開始）
+fork1: {
+  class: fork_join
+  label: "並行処理開始"
 }
 
-parallel_activity2: {
+# 並行アクティビティ（スイムレーンの使用例）
+user_lane.user_activity: {
   class: activity
-  label: "並行活動2"
+  label: "ユーザー作業"
+}
+
+system_lane.system_activity: {
+  class: activity
+  label: "システム処理"
 }
 
 # ジョインノード（並行処理の合流）
 join1: {
   class: fork_join
-  label: ""
+  label: "並行処理合流"
 }
 
 # オブジェクト（成果物やデータ）
@@ -169,10 +158,11 @@ end_node: {
 start_node -> activity1: "開始"
 activity1 -> decision1: "処理完了"
 decision1 -> fork1: "Yes"
-decision1 -> end_node: "No"
-fork1 -> parallel_activity1: ""
-fork1 -> parallel_activity2: ""
-parallel_activity1 -> join1: ""
-parallel_activity2 -> join1: ""
-join1 -> object1: "成果物作成"
+decision1 -> merge1: "No"
+fork1 -> user_lane.user_activity: ""
+fork1 -> system_lane.system_activity: ""
+user_lane.user_activity -> join1: ""
+system_lane.system_activity -> join1: ""
+join1 -> merge1: ""
+merge1 -> object1: "成果物作成"
 object1 -> end_node: "完了"

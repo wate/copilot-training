@@ -6,35 +6,10 @@
 ## -------------------------
 vars: {
   d2-config: {
-    ### レイアウトエンジン
-    ### @see https://d2lang.com/tour/layouts/#layout-engines
     layout-engine: dagre
-    ### テーマ
-    ### @see https://d2lang.com/tour/themes
     theme-id: 0
   }
 }
-## Options
-## -------------------------
-### Direction
-# up / down / right / left
-### Shapes
-# rectangle / square / page / parallelogram / document
-# cylinder / queue / package / step / callout / stored_data
-# person / diamond / oval / circle / hexagon / cloud
-#### Special Shape
-# sequence_diagram / sql_table / class
-### Styles
-# opacity / stroke / stroke-width / stroke-dash / border-radius / font / font-size / font-color
-# bold / italic / underline / text-transform / root
-#### shape only
-# fill / fill-pattern / shadow / multiple
-#### rectangle / square only
-# 3D
-#### rectangles / ovals only
-# double-border
-#### connection only
-# animated
 
 ## スタイル定義
 ## -------------------------
@@ -80,6 +55,23 @@ classes: {
       font-size: 14
     }
   }
+  subprocess: {
+    shape: rectangle
+    style: {
+      double-border: true
+      fill: "#fff2cc"
+      stroke: "#333333"
+      font-size: 14
+    }
+  }
+  exception: {
+    shape: hexagon
+    style: {
+      fill: "#f8cecc"
+      stroke: "#333333"
+      font-size: 14
+    }
+  }
 }
 
 ## フローチャートの定義
@@ -113,6 +105,18 @@ db1: {
   label: "データ保存"
 }
 
+# サブプロセスの定義
+api_call: {
+  class: subprocess
+  label: "外部API呼び出し"
+}
+
+# 例外処理の定義
+error_handler: {
+  class: exception
+  label: "エラーハンドリング"
+}
+
 end: {
   class: terminal
   label: "終了"
@@ -123,6 +127,9 @@ end: {
 start -> input1: "開始"
 input1 -> step1: "入力を処理"
 step1 -> decision1: "判断"
-decision1 -> db1: "Yes"
+decision1 -> api_call: "Yes"
 decision1 -> end: "No"
+api_call -> db1: "API成功"
+api_call -> error_handler: "API失敗"
+error_handler -> end: "エラー処理完了"
 db1 -> end: "完了"
