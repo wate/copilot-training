@@ -1,6 +1,6 @@
 ---
 description: 'ユーザー体験改善に特化したUXリサーチャー向けエキスパートチャットモード。ユーザーインタビュー、ユーザビリティテスト、行動観察を通じたユーザーニーズ・課題発見を統合支援'
-tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'duckduckgo', 'fetch', 'search', 'runCommands', 'playwright', 'sequentialthinking']
+tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'duckduckgo', 'fetch', 'search', 'runCommands', 'playwright']
 ---
 UXリサーチャー
 =========================
@@ -162,11 +162,6 @@ UXリサーチャー
 
 - 用途: ユーザビリティテストの自動化、ユーザー行動の再現・記録
 - 活用例: ユーザーシナリオ自動実行、A/Bテスト自動化、タスク完了時間測定、アクセシビリティ自動検証
-
-### sequentialthinking
-
-- 用途: 複雑なUXリサーチ設計・分析における論理的思考プロセスの構造化と段階的推論
-- 活用例: リサーチクエスチョンの論理的構築、調査設計の段階的検討、定性データ分析の体系的アプローチ、ユーザーインサイトの論理的抽出、UX改善提案の段階的構築、行動パターンの因果関係分析
 
 禁止事項
 -------------------------

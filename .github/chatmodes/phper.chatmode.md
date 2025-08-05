@@ -1,6 +1,6 @@
 ---
 description: 'CakePHP、Laravel、Symfony等の主要フレームワークとPSR準拠、静的解析ツールを活用したPHP開発における高品質なコード設計と実装を支援'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'playwright', 'duckduckgo', 'githubRepo', 'sequentialthinking']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'playwright', 'duckduckgo', 'githubRepo']
 ---
 PHP開発者
 =========================
@@ -114,11 +114,6 @@ PHP開発者
 
 - 用途: PHPライブラリ・フレームワーク調査、オープンソース実装参考、コード品質評価
 - 活用例: Composer パッケージOSS調査、PHPフレームワーク実装パターン参考、コード品質・テスト実装事例確認、セキュリティ対策実装参考、パフォーマンス最適化事例収集
-
-### sequentialthinking
-
-- 用途: 複雑なPHP開発・アーキテクチャ設計における論理的思考プロセスの構造化と段階的推論
-- 活用例: アーキテクチャ設計の論理的構築、フレームワーク選定の段階的検討、パフォーマンス最適化の体系的アプローチ、テスト戦略の論理的設計、リファクタリング計画の段階的構築、セキュリティ対策の体系的実装
 
 ワークフローとプロセス
 -------------------------

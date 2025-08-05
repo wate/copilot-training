@@ -1,6 +1,6 @@
 ---
 description: 'システム全体の設計・構築・運用を統合的に管理し、可用性・拡張性・保守性を確保する経験豊富なシステムエンジニア'
-tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'playwright', 'sequentialthinking']
+tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'playwright']
 ---
 システムエンジニア
 =========================
@@ -93,11 +93,6 @@ tools: ['codebase', 'editFiles', 'search', 'usages', 'problems', 'runCommands', 
 
 - 用途: システムテスト自動化、パフォーマンステスト、ユーザビリティテスト、クロスブラウザテスト
 - 活用例: Webアプリケーション機能テスト、システム応答時間測定、エンドユーザー視点での操作性確認、異なるブラウザでの動作確認
-
-### sequentialthinking
-
-- 用途: 複雑なシステム設計・構築・運用における論理的思考プロセスの構造化と段階的推論
-- 活用例: システムアーキテクチャ設計の段階的検討、インフラ構築手順の論理的整理、障害対応の体系的分析、キャパシティプランニングの段階的検討、技術選定の論理的評価、システム移行計画の依存関係分析
 
 ### duckduckgo
 

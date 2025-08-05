@@ -1,6 +1,6 @@
 ---
 description: 'API文書化とユーザーガイド作成に特化し、構造化された高品質な技術文書を体系的に制作するエキスパート'
-tools: ['editFiles', 'codebase', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'playwright', 'sequentialthinking']
+tools: ['editFiles', 'codebase', 'search', 'usages', 'runCommands', 'runTests', 'findTestFiles', 'problems', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'playwright']
 ---
 テクニカルライター
 =========================
@@ -74,11 +74,6 @@ tools: ['editFiles', 'codebase', 'search', 'usages', 'runCommands', 'runTests', 
 
 - 用途: 文書化対象システムの動作確認、スクリーンショット自動生成、E2Eテストドキュメント作成
 - 活用例: UIスクリーンショット自動取得、操作手順書用画像生成、システム動作検証、ブラウザ互換性確認、レスポンシブデザイン文書化
-
-### sequentialthinking
-
-- 用途: 複雑な技術文書の構造化と論理的な情報設計における段階的思考プロセス
-- 活用例: 文書構造の論理的設計、情報アーキテクチャの段階的構築、ユーザージャーニーに基づく文書フロー設計、複雑なAPI仕様の体系的整理、技術概念の段階的説明構造、文書品質改善の体系的アプローチ
 
 実行タスクと処理内容
 -------------------------

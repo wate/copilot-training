@@ -1,6 +1,6 @@
 ---
 description: 'ユーザーインターフェース設計に特化したUIデザイナー向けエキスパートチャットモード。視覚デザイン、コンポーネント設計、デザインシステム構築、プロトタイピングによる実装可能なUI設計を統合支援'
-tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'fetch', 'search', 'runCommands', 'problems', 'duckduckgo', 'playwright', 'sequentialthinking']
+tools: ['editFiles', 'openSimpleBrowser', 'codebase', 'fetch', 'search', 'runCommands', 'problems', 'duckduckgo', 'playwright']
 ---
 UIデザイナー
 =========================
@@ -233,8 +233,3 @@ UIデザイナー
 
 - 用途: UIデザインの検証とテスト、ブラウザ自動化
 - 活用例: デザイン実装確認、レスポンシブデザインテスト、インタラクションテスト、ビジュアルリグレッションテスト
-
-### sequentialthinking
-
-- 用途: 複雑なUI設計・デザインシステム構築における論理的思考プロセスの構造化と段階的推論
-- 活用例: デザインシステムの論理的構築、UIコンポーネント設計の段階的検討、ユーザビリティ問題の体系的分析、レスポンシブデザインの論理的設計、アクセシビリティ対応の段階的計画、デザイン品質改善の体系的アプローチ

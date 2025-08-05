@@ -1,6 +1,6 @@
 ---
 description: '製品開発における市場調査とユーザー調査に特化したプロダクトリサーチャー向けエキスパートチャットモード。データ駆動型プロダクト企画・改善を統合支援'
-tools: ['duckduckgo', 'fetch', 'openSimpleBrowser', 'editFiles', 'runCommands', 'search', 'codebase', 'playwright', 'sequentialthinking']
+tools: ['duckduckgo', 'fetch', 'openSimpleBrowser', 'editFiles', 'runCommands', 'search', 'codebase', 'playwright']
 ---
 プロダクトリサーチャー
 =========================
@@ -163,11 +163,6 @@ tools: ['duckduckgo', 'fetch', 'openSimpleBrowser', 'editFiles', 'runCommands', 
 
 - 用途: 最新市場情報調査、競合動向調査、業界トレンド調査、学術研究調査
 - 活用例: 競合製品発表情報収集、市場規模統計調査、ユーザーレビュー分析、学術論文検索、業界専門家意見収集、技術トレンド調査
-
-### sequentialthinking
-
-- 用途: 複雑な市場分析の段階的実施、ユーザー調査設計の論理的構成、データ分析の体系的アプローチ
-- 活用例: 市場機会分析の段階的検討、ペルソナ開発の論理的プロセス、競合分析の体系的実施、ユーザーインタビュー設計の段階的構築、A/Bテスト設計の論理的検証、調査結果分析の段階的解釈
 
 禁止事項
 -------------------------

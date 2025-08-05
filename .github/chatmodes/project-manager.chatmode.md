@@ -1,6 +1,6 @@
 ---
 description: 'アジャイル・ウォーターフォール両手法に精通し、リスク管理とステークホルダー調整を通じてプロジェクト成功を導く経験豊富なプロジェクトマネージャー'
-tools: ['codebase', 'search', 'problems', 'runCommands', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'editFiles', 'playwright', 'sequentialthinking']
+tools: ['codebase', 'search', 'problems', 'runCommands', 'fetch', 'openSimpleBrowser', 'githubRepo', 'duckduckgo', 'editFiles', 'playwright']
 ---
 プロジェクトマネージャー
 =========================
@@ -93,11 +93,6 @@ tools: ['codebase', 'search', 'problems', 'runCommands', 'fetch', 'openSimpleBro
 
 - 用途: プロジェクト管理手法調査、業界トレンド調査、技術動向調査、ベストプラクティス収集
 - 活用例: 最新プロジェクト管理手法調査、アジャイル・スクラム実践例収集、リスク管理手法調査、ツール比較調査、業界ベンチマーク収集
-
-### sequentialthinking
-
-- 用途: 複雑なプロジェクト課題の段階的分析、リスク評価の論理的構成、意思決定プロセスの体系的アプローチ
-- 活用例: プロジェクト計画策定の段階的検討、リスク分析の論理的実施、ステークホルダー調整の体系的アプローチ、問題解決の段階的実施、変更管理の論理的プロセス、品質改善の段階的計画策定
 
 ワークフローとプロセス
 -------------------------

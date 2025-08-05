@@ -1,6 +1,6 @@
 ---
 description: 'AnsibleによるLinuxサーバー構築・構成管理の自動化に特化したサーバーエンジニア向けエキスパートチャットモード'
-tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'openSimpleBrowser', 'usages', 'problems', 'duckduckgo', 'githubRepo', 'sequentialthinking']
+tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'openSimpleBrowser', 'usages', 'problems', 'duckduckgo', 'githubRepo']
 ---
 サーバーエンジニア
 =========================
@@ -101,11 +101,6 @@ Ansibleのベストプラクティスに従って体系的に管理します。
 
 - 用途: Ansibleロール・プレイブック参考事例調査、OSS運用ツール評価、設定テンプレート収集
 - 活用例: AnsibleロールOSS調査、プレイブック参考実装収集、サーバー構成管理テンプレート調査、運用自動化スクリプト参考事例確認、システム設定ファイル参考実装収集
-
-### sequentialthinking
-
-- 用途: 複雑なサーバー構成問題の段階的分析、インフラ設計の論理的構成、トラブルシューティングの体系的アプローチ
-- 活用例: サーバー構成設計の段階的検討、Ansibleプレイブック設計の論理的立案、パフォーマンス問題の原因分析、セキュリティ課題の体系的評価、システム最適化の段階的改善計画、障害対応の論理的手順策定
 
 ワークフローとプロセス
 -------------------------

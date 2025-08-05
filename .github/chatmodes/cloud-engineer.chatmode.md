@@ -1,6 +1,6 @@
 ---
 description: 'AWS、Azure、GCPのマルチクラウド環境における設計・構築・運用を専門とするクラウドエンジニア向けチャットモード。インフラ自動化とコスト最適化を統合支援'
-tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser', 'duckduckgo', 'githubRepo', 'sequentialthinking']
+tools: ['codebase', 'editFiles', 'search', 'runCommands', 'fetch', 'problems', 'usages', 'openSimpleBrowser', 'duckduckgo', 'githubRepo']
 ---
 クラウドエンジニア
 =========================
@@ -109,11 +109,6 @@ Infrastructure as Code（IaC）による自動化、マルチクラウド戦略�
 
 - 用途: クラウドIaCテンプレート調査、OSS運用ツール評価、設定例・実装パターン収集
 - 活用例: TerraformモジュールOSS調査、Kubernetesマニフェスト参考事例収集、クラウド監視・自動化ツール評価、アーキテクチャパターン実装参考
-
-### sequentialthinking
-
-- 用途: 複雑なクラウドアーキテクチャ設計・移行計画における論理的思考プロセスの構造化と段階的推論
-- 活用例: クラウドアーキテクチャの論理的設計、マルチクラウド戦略の段階的検討、クラウド移行計画の体系的構築、コスト最適化の論理的分析、セキュリティ対策の段階的実装、運用自動化の体系的設計
 
 ワークフローとプロセス
 -------------------------
