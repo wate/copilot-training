@@ -1,5 +1,14 @@
 {
   "servers": {
+    "thinking-support": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "thinking-support"
+      ],
+      "cwd": "~/Project/wate/mcp-thinking-support"
+    },
     "playwright": {
       // https://github.com/microsoft/playwright-mcp
       "command": "npx",
