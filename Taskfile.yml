@@ -1,12 +1,14 @@
 # https://taskfile.dev
 
 version: '3'
-
-vars:
-  GREETING: Hello, World!
-
 tasks:
-  default:
+  doc_db:
+    cmd: tbls -c .tbls.yml
+  doc_api:
     cmds:
-      - echo "{{.GREETING}}"
-    silent: true
+      - task: doc_api_html
+      - task: doc_api_xml
+  doc_api_html:
+    cmd: phpdoc run
+  doc_api_xml:
+    cmd: phpdoc run --template=xml
