@@ -45,6 +45,7 @@
         "redhat.ansible",
         "streetsidesoftware.code-spell-checker",
         "adpyke.vscode-sql-formatter",
+        "ionutvmi.path-autocomplete",
         "dbcode.dbcode"
       ]
     }
