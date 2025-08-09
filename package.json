@@ -1,0 +1,25 @@
+{
+  "name": "copilot-training",
+  "author": {
+    "name": "wate"
+  },
+  "type": "module",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "build": "run-p build:*",
+    "build:js": "rolldown -c rolldown.config.mjs",
+    "build:css": "sass -I node_modules templates:webroot/css",
+    "build:image": "run-p image:*",
+    "build:font": "run-p font:*"
+  },
+  "devDependencies": {
+    "cpx2": "^8.0.0",
+    "glob": "^11.0.3",
+    "lodash.escaperegexp": "^4.1.2",
+    "npm-check-updates": "^18.0.2",
+    "npm-run-all2": "^8.0.4",
+    "rolldown": "^1.0.0-beta.31",
+    "sass": "^1.90.0"
+  }
+}
