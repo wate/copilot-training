@@ -5,13 +5,17 @@
   },
   "type": "module",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0"
+  },
   "scripts": {
     "build": "run-p build:*",
     "build:js": "rolldown -c rolldown.config.mjs",
     "build:css": "sass -I node_modules templates:webroot/css",
     "build:image": "run-p image:*",
-    "build:font": "run-p font:*"
+    "build:font": "run-p font:*",
+    "image:dummy": "echo 'dummy image build task'",
+    "font:fontawesome": "cpx node_modules/@fortawesome/fontawesome-free/webfonts/*.{woff,woff2} webroot/font/vendor/fontawesome"
   },
   "devDependencies": {
     "cpx2": "^8.0.0",
