@@ -2,10 +2,24 @@
   "[php]": {
     "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
   },
+  "[scss]": {
+    "path-autocomplete.pathMappings": {
+      "$root": "${folder}/node_modules"
+    },
+    "path-autocomplete.transformations": [
+      {
+        "type": "replace",
+        "parameters": ["^_", ""],
+        "when": {
+          "fileName": "\\.scss$"
+        }
+      }
+    ]
+  },
   "files.defaultLanguage": "markdown",
   "files.associations": {
     "*.pict": "powershell",
   },
   "chat.promptFiles": true,
-  "chat.agent.enabled": true,
+  "chat.agent.enabled": true
 }
