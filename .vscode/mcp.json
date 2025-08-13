@@ -19,14 +19,6 @@
         "--isolated"
       ]
     },
-    "excel": {
-      // https://github.com/haris-musa/excel-mcp-server/
-      "command": "uvx",
-      "args": [
-        "excel-mcp-server",
-        "stdio"
-      ],
-    },
     "duckduckgo": {
       // https://github.com/nickclyde/duckduckgo-mcp-server
       "command": "uvx",
@@ -34,6 +26,14 @@
         "duckduckgo-mcp-server",
       ],
     },
+    // "context7": {
+    //   "type": "stdio",
+    //   "command": "npx",
+    //   "args": [
+    //     "-y",
+    //     "@upstash/context7-mcp"
+    //   ]
+    // },
     // "duckdb": {
     //   // https://github.com/motherduckdb/mcp-server-motherduck
     //   "command": "uvx",
@@ -50,6 +50,14 @@
     //     "markitdown-mcp"
     //   ]
     // },
+    // "excel": {
+    //   // https://github.com/haris-musa/excel-mcp-server/
+    //   "command": "uvx",
+    //   "args": [
+    //     "excel-mcp-server",
+    //     "stdio"
+    //   ],
+    // },
     // "meilisearch": {
     //   // https://github.com/meilisearch/meilisearch-mcp
     //   "command": "uvx",
@@ -57,11 +65,11 @@
     //     "-n",
     //     "meilisearch-mcp"
     //   ],
-    //   // "env": {
-    //   //   "MEILI_HTTP_ADDR": "${env:MEILI_HTTP_ADDR}",
-    //   //   "MEILI_MASTER_KEY": "${env:MEILI_MASTER_KEY}"
-    //   // },
-    //   // "envFile": ".env",
-    // }
+      // "env": {
+      //   "MEILI_HTTP_ADDR": "${env:MEILI_HTTP_ADDR}",
+      //   "MEILI_MASTER_KEY": "${env:MEILI_MASTER_KEY}"
+      // },
+      // "envFile": ".env",
+    }
   }
 }
