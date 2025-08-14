@@ -49,12 +49,11 @@ services:
     environment:
       TZ: Asia/Tokyo
   # ollama:
-  #   image: ./ollama/ollama:latest
+  #   image: ollama/ollama:latest
   #   ports:
   #     - "11434:11434"
-  #   # モデルの取得コマンド: ollama pull mxbai-embed-large
-  #   # volumes:
-  #   #   - ./ollama:/root/.ollama
+  #   volumes:
+  #     - ~/.ollama/models:/root/.ollama/models
   #   environment:
   #     TZ: Asia/Tokyo
 volumes:
