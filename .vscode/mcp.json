@@ -26,14 +26,6 @@
         "duckduckgo-mcp-server",
       ],
     },
-    // "context7": {
-    //   "type": "stdio",
-    //   "command": "npx",
-    //   "args": [
-    //     "-y",
-    //     "@upstash/context7-mcp"
-    //   ]
-    // },
     // "duckdb": {
     //   // https://github.com/motherduckdb/mcp-server-motherduck
     //   "command": "uvx",
@@ -43,11 +35,12 @@
     //     ":memory:"
     //   ]
     // },
-    // "markitdown": {
-    //   // https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp
-    //   "command": "uvx",
+    // "context7": {
+    //   "type": "stdio",
+    //   "command": "npx",
     //   "args": [
-    //     "markitdown-mcp"
+    //     "-y",
+    //     "@upstash/context7-mcp"
     //   ]
     // },
     // "excel": {
@@ -65,11 +58,11 @@
     //     "-n",
     //     "meilisearch-mcp"
     //   ],
-      // "env": {
-      //   "MEILI_HTTP_ADDR": "${env:MEILI_HTTP_ADDR}",
-      //   "MEILI_MASTER_KEY": "${env:MEILI_MASTER_KEY}"
-      // },
-      // "envFile": ".env",
-    }
+    //   // "env": {
+    //   //   "MEILI_HTTP_ADDR": "${env:MEILI_HTTP_ADDR}",
+    //   //   "MEILI_MASTER_KEY": "${env:MEILI_MASTER_KEY}"
+    //   // },
+    //   // "envFile": ".env",
+    // }
   }
 }
