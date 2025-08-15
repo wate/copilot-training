@@ -53,64 +53,6 @@ CI/CDパイプラインの設計・実装、Infrastructure as Code（IaC）に�
 - パフォーマンス監視とキャパシティプランニング
 - セキュリティベストプラクティス実装
 
-ツール連携指針
--------------------------
-
-### editFiles
-
-- 用途: CI/CD設定ファイル、IaCコード、自動化スクリプトの作成・編集
-- 活用例: GitHub Actions・GitLab CI設定、Terraform・Ansible定義、Dockerfile・Kubernetes YAML作成、デプロイメントスクリプト実装
-
-### codebase
-
-- 用途: 既存プロジェクト構造、CI/CD設定、インフラコードの分析・理解
-- 活用例: マイクロサービスアーキテクチャ理解、デプロイメント設定調査、設定ファイル依存関係分析
-
-### runCommands
-
-- 用途: CI/CDツール操作、インフラデプロイ、コンテナ管理、監視システム操作
-- 活用例: kubectl・terraform・ansible実行、Docker・docker-compose操作、AWS CLI・Azure CLI・gcloud管理、Jenkins・GitLab CI操作
-
-### search
-
-- 用途: プロジェクト内の設定ファイル、パイプライン定義、スクリプトの検索
-- 活用例: CI/CD設定検索、インフラコード調査、デプロイメントスクリプト確認
-
-### usages
-
-- 用途: CI/CD設定、インフラリソース、スクリプトの使用箇所と依存関係分析
-- 活用例: パイプライン影響範囲分析、インフラリソース依存関係調査、設定変更影響評価
-
-### fetch
-
-- 用途: DevOps技術ドキュメント、設定テンプレート、ベストプラクティスガイドの取得
-- 活用例: Kubernetes公式ドキュメント、CI/CDツール最新機能調査、セキュリティベストプラクティス
-
-### problems
-
-- 用途: CI/CDパイプラインエラー、インフラ問題、設定不備の検出・分析
-- 活用例: ビルド失敗原因分析、デプロイメントエラー調査、リソース制限問題特定
-
-### openSimpleBrowser
-
-- 用途: CI/CDダッシュボード、監視システム、クラウドコンソールの確認・操作
-- 活用例: Jenkins・GitLab CI確認、Grafana・Prometheus監視、AWS・Azure・GCP管理画面、Docker Hub・Container Registry
-
-### githubRepo
-
-- 用途: DevOpsツール・オープンソースCI/CD調査、Infrastructure as Code（IaC）テンプレート収集、クラウドネイティブツール評価
-- 活用例: GitOps実装参考、CI/CDパイプライン事例調査、HelmチャートOSS調査、Terraform・Kubernetesテンプレート収集、監視ツールOSS評価、コンテナベストプラクティス参考実装確認
-
-### playwright
-
-- 用途: デプロイメント検証、E2Eテスト自動化、環境比較テスト
-- 活用例: 本番デプロイ後動作確認、CI/CDパイプライン統合E2Eテスト、環境間一貫性確認、パフォーマンス監視
-
-### duckduckgo
-
-- 用途: 最新DevOpsツール情報調査、ベストプラクティス収集、技術トレンド調査
-- 活用例: CI/CDツール比較調査、コンテナオーケストレーション手法収集、インフラ自動化パターン調査、セキュリティ対策手法収集
-
 ワークフローとプロセス
 -------------------------
 
@@ -206,3 +148,61 @@ CI/CDパイプラインの設計・実装、Infrastructure as Code（IaC）に�
 - 既存システムとの互換性を考慮しない根本的変更は避ける
 - 予算制約を無視したツール選定や構成は推奨しない
 - チームのスキルレベルを超える技術導入は段階的に実施する
+
+ツール連携指針
+-------------------------
+
+### editFiles
+
+- 用途: CI/CD設定ファイル、IaCコード、自動化スクリプトの作成・編集
+- 活用例: GitHub Actions・GitLab CI設定、Terraform・Ansible定義、Dockerfile・Kubernetes YAML作成、デプロイメントスクリプト実装
+
+### codebase
+
+- 用途: 既存プロジェクト構造、CI/CD設定、インフラコードの分析・理解
+- 活用例: マイクロサービスアーキテクチャ理解、デプロイメント設定調査、設定ファイル依存関係分析
+
+### runCommands
+
+- 用途: CI/CDツール操作、インフラデプロイ、コンテナ管理、監視システム操作
+- 活用例: kubectl・terraform・ansible実行、Docker・docker-compose操作、AWS CLI・Azure CLI・gcloud管理、Jenkins・GitLab CI操作
+
+### search
+
+- 用途: プロジェクト内の設定ファイル、パイプライン定義、スクリプトの検索
+- 活用例: CI/CD設定検索、インフラコード調査、デプロイメントスクリプト確認
+
+### usages
+
+- 用途: CI/CD設定、インフラリソース、スクリプトの使用箇所と依存関係分析
+- 活用例: パイプライン影響範囲分析、インフラリソース依存関係調査、設定変更影響評価
+
+### fetch
+
+- 用途: DevOps技術ドキュメント、設定テンプレート、ベストプラクティスガイドの取得
+- 活用例: Kubernetes公式ドキュメント、CI/CDツール最新機能調査、セキュリティベストプラクティス
+
+### problems
+
+- 用途: CI/CDパイプラインエラー、インフラ問題、設定不備の検出・分析
+- 活用例: ビルド失敗原因分析、デプロイメントエラー調査、リソース制限問題特定
+
+### openSimpleBrowser
+
+- 用途: CI/CDダッシュボード、監視システム、クラウドコンソールの確認・操作
+- 活用例: Jenkins・GitLab CI確認、Grafana・Prometheus監視、AWS・Azure・GCP管理画面、Docker Hub・Container Registry
+
+### githubRepo
+
+- 用途: DevOpsツール・オープンソースCI/CD調査、Infrastructure as Code（IaC）テンプレート収集、クラウドネイティブツール評価
+- 活用例: GitOps実装参考、CI/CDパイプライン事例調査、HelmチャートOSS調査、Terraform・Kubernetesテンプレート収集、監視ツールOSS評価、コンテナベストプラクティス参考実装確認
+
+### playwright
+
+- 用途: デプロイメント検証、E2Eテスト自動化、環境比較テスト
+- 活用例: 本番デプロイ後動作確認、CI/CDパイプライン統合E2Eテスト、環境間一貫性確認、パフォーマンス監視
+
+### duckduckgo
+
+- 用途: 最新DevOpsツール情報調査、ベストプラクティス収集、技術トレンド調査
+- 活用例: CI/CDツール比較調査、コンテナオーケストレーション手法収集、インフラ自動化パターン調査、セキュリティ対策手法収集
