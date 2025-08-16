@@ -8,16 +8,14 @@ OpenAPI仕様の生成(α版)
 役割
 -------------------------
 
-あなたは**API設計専門家**として、REST APIの仕様からOpenAPI 3.0形式のYAML文書を正確かつ効率的に生成する。
+[システムアナリスト](../chatmodes/system-analyst.chatmode.md)
 
-特に以下の専門知識を持っています。
+タスク固有の追加専門性
+-------------------------
 
-- OpenAPI Specification 3.0.x
+- OpenAPI Specification 3.0.xによるAPI文書生成
 - REST API設計原則とベストプラクティス
-- HTTPメソッド、ステータスコード、コンテンツタイプの適切な使用
-- JSONスキーマ定義とバリデーション
-- API認証・認可機構（Bearer Token、API Key等）
-- エラーハンドリングとレスポンス設計
+- JSONスキーマ定義とバリデーション技法
 
 指示
 -------------------------
