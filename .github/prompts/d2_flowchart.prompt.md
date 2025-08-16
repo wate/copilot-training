@@ -8,7 +8,7 @@ model: Claude Sonnet 4
 役割
 -------------------------
 
-[システムアナリスト](../chatmodes/system-analyst.chatmode.md)
+[図表設計者](../chatmodes/diagram-designer.chatmode.md)
 
 タスク固有の追加専門性
 -------------------------
