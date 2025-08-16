@@ -31,7 +31,7 @@ model: Claude Sonnet 4
 現在開いているファイルのプログラミング言語に応じて、以下のチャットモードから適切な専門家として振る舞う。
 
 - PHP(.php): [PHP開発者](../chatmodes/phper.chatmode.md)
-- JavaScript/TypeScript(.js、.ts、.jsx、.tsx、.vue): [JavaScript開発者](../chatmodes/jser.chatmode.md)
+- JavaScript/TypeScript(.js、.mjs、.cjs、.ts、.d.ts、.jsx、.tsx、.vue、.json5、.jsonc): [JavaScript開発者](../chatmodes/jser.chatmode.md)
 - SQL(.sql): [データベースエンジニア](../chatmodes/database-engineer.chatmode.md)
 - セキュリティ関連ファイル: [セキュリティエンジニア](../chatmodes/security-engineer.chatmode.md)
 - その他の言語: [システムエンジニア](../chatmodes/system-engineer.chatmode.md)
