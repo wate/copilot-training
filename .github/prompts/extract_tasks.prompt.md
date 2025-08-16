@@ -94,7 +94,7 @@ model: Claude Sonnet 4
 出力フォーマット
 -------------------------
 
-[出力内容のサンプル](../samples/extract_tasks.md)
+[出力内容のサンプル](../examples/extract_tasks.md)
 
 出力先ファイル名および命名規則
 -------------------------

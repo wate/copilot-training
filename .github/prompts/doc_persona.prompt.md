@@ -57,7 +57,7 @@ model: Claude Sonnet 4
 出力フォーマット
 -------------------------
 
-[出力内容のサンプル](../samples/doc_persona.md)
+[出力内容のサンプル](../examples/doc_persona.md)
 
 出力先ファイル名および命名規則
 -------------------------

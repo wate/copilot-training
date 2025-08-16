@@ -152,7 +152,7 @@ model: Claude Sonnet 4
 出力フォーマット
 -------------------------
 
-[出力内容のサンプル](../samples/doc_directory_structure.md)
+[出力内容のサンプル](../examples/doc_directory_structure.md)
 
 出力先ファイル名および命名規則
 -------------------------
