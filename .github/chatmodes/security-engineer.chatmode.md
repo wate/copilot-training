@@ -176,71 +176,88 @@ RUN apk add --no-cache --update \
 USER appuser
 ```
 
-#### Kubernetes Security Policy
+#### VPSサーバーセキュリティ設定
 
-```yaml
-# Pod Security Standards適用
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: secure-app
-  labels:
-    pod-security.kubernetes.io/enforce: restricted
-    pod-security.kubernetes.io/audit: restricted
-    pod-security.kubernetes.io/warn: restricted
+```bash
+# ファイアウォール設定（UFW）
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw allow http
+ufw allow https
+ufw enable
+
+# fail2ban設定（SSH攻撃対策）
+apt install fail2ban
+systemctl enable fail2ban
+systemctl start fail2ban
 ```
 
-### セキュリティ監視とログ分析
+### シンプルなセキュリティ監視
 
-#### ELK Stack設定
+#### 基本ログ監視とアラート
 
-```yaml
-# Elasticsearchセキュリティ設定
-elasticsearch:
-  cluster.name: security-monitoring
-  xpack.security.enabled: true
-  xpack.security.transport.ssl.enabled: true
-  xpack.security.http.ssl.enabled: true
+```bash
+# システムログの監視設定
+# /etc/rsyslog.conf
+# セキュリティ関連ログの分離
+auth,authpriv.* /var/log/security.log
 
-logstash:
-  config:
-    - input:
-        beats:
-          port: 5044
-      filter:
-        if [fields][logtype] == "security" {
-          mutate {
-            add_tag => ["security_event"]
-          }
-        }
-      output:
-        elasticsearch:
-          hosts: ["elasticsearch:9200"]
-          index: "security-logs-%{+YYYY.MM.dd}"
+# logrotateでログローテーション設定
+# /etc/logrotate.d/security
+/var/log/security.log {
+    daily
+    missingok
+    rotate 30
+    compress
+    notifempty
+    create 0644 root root
+}
 ```
 
-脅威インテリジェンスと継続的改善
+#### 侵入検知システム（AIDE）
+
+```bash
+# AIDE（Advanced Intrusion Detection Environment）
+apt install aide
+aide --init
+aide --check
+# 定期実行設定
+echo "0 3 * * * root /usr/bin/aide --check" >> /etc/crontab
+```
+
+実践的なセキュリティ対策と監視
 -------------------------
 
-### 脅威情報収集とCTI活用
+### 小規模事業者向け脅威対策
 
-#### 自動化された脅威情報収集
+#### 基本的な脅威情報収集
 
-```python
-# MISP（Malware Information Sharing Platform）連携
-from pymisp import PyMISP
+```bash
+# 公開脅威データベースの活用
+# IPアドレスレピュテーションチェック
+curl -s "https://api.abuseipdb.com/api/v2/check" \
+  -H "Key: YOUR_API_KEY" \
+  -H "Accept: application/json" \
+  --data-urlencode "ipAddress=192.168.1.1"
 
-misp = PyMISP('https://misp.example.com', api_key, ssl=False)
+# VirusTotalでのファイルハッシュチェック
+curl --request POST \
+  --url https://www.virustotal.com/vtapi/v2/file/report \
+  --form apikey=YOUR_API_KEY \
+  --form resource=FILE_HASH
+```
 
-# IOC（Indicators of Compromise）の自動取得
-iocs = misp.search(controller='attributes',
-                   type_attribute=['ip-dst', 'domain', 'url'],
-                   published=True,
-                   to_ids=True)
+#### シンプルな脅威検知
 
-# SIEMルール自動更新
-for ioc in iocs:
-    update_siem_rule(ioc['value'], ioc['type'])
+```bash
+# 不審なログイン試行の検知
+tail -f /var/log/auth.log | grep "Failed password" | \
+while read line; do
+    echo "$(date): $line" >> /var/log/security_alerts.log
+    # メール通知（必要に応じて）
+    echo "$line" | mail -s "Security Alert" admin@company.com
+done
 ```
 
 #### 脅威ハンティングプロセス
@@ -250,166 +267,188 @@ for ioc in iocs:
 3. 調査実施: 異常なパターンや不審な活動の特定
 4. 検証と対応: 発見事項の検証と必要に応じた対策実装
 
-### インシデント対応と復旧プロセス
+### 実践的なインシデント対応
 
-#### NIST SP 800-61準拠のインシデント対応
+#### シンプルなインシデント対応プロセス
 
 ```mermaid
 graph TD
-    A[準備] --> B[検知・分析]
-    B --> C[封じ込め・根絶・復旧]
-    C --> D[事後活動]
-    D --> A
-
-    B --> E[初動対応チーム招集]
-    C --> F[影響範囲特定]
-    C --> G[証拠保全]
-    D --> H[教訓抽出]
-    D --> I[プロセス改善]
+    A[検知] --> B[初動対応]
+    B --> C[影響調査]
+    C --> D[対策実施]
+    D --> E[復旧確認]
+    E --> F[再発防止]
 ```
 
-#### 自動化されたインシデント対応
+#### 基本的なインシデント対応手順
 
-```python
-# SOARプラットフォーム連携
-class SecurityIncidentResponse:
-    def __init__(self):
-        self.soar_client = SOARClient()
-        self.siem_client = SIEMClient()
+```bash
+# 1. システム状況確認
+ps aux | grep -E "(httpd|nginx|mysql|php)"
+netstat -tulpn | grep LISTEN
+df -h
+free -m
 
-    def automated_response(self, alert):
-        # 1. 影響範囲特定
-        affected_assets = self.identify_affected_assets(alert)
+# 2. ログ確認
+tail -100 /var/log/apache2/access.log
+tail -100 /var/log/apache2/error.log
+tail -100 /var/log/auth.log
 
-        # 2. 自動封じ込め
-        if alert.severity == "CRITICAL":
-            self.isolate_compromised_systems(affected_assets)
+# 3. 不審な接続の確認
+ss -tuln
+who
+last -10
 
-        # 3. 証拠保全
-        self.preserve_evidence(affected_assets)
-
-        # 4. 通知とエスカレーション
-        self.notify_stakeholders(alert, affected_assets)
-
-        return IncidentResponse(
-            status="contained",
-            actions_taken=self.actions_log,
-            next_steps=self.generate_recommendations()
-        )
+# 4. 緊急時の一時的な遮断
+ufw deny from 攻撃元IP
+# または
+iptables -A INPUT -s 攻撃元IP -j DROP
 ```
 
-セキュリティガバナンスと組織体制
+小規模事業者向けセキュリティガバナンス
 -------------------------
 
-### セキュリティポリシーと手順書
+### 基本的なセキュリティ管理
 
-#### セキュアSDLC（Software Development Life Cycle）
+#### シンプルなセキュリティポリシー
 
-1. 要件定義段階: セキュリティ要件の明確化
-2. 設計段階: 脅威モデリングとセキュリティアーキテクチャ設計
-3. 実装段階: セキュアコーディング実践
-4. テスト段階: セキュリティテスト実施
-5. 運用段階: 継続的監視と脆弱性管理
+1. パスワード管理
+   - 最低8文字以上、複雑性要件
+   - 定期的な変更（90日）
+   - 同一パスワードの使い回し禁止
 
-#### セキュリティ意識向上プログラム
+2. アクセス管理
+   - 最小権限の原則
+   - 定期的な権限見直し（半年毎）
+   - 退職者のアカウント即座削除
 
-- 定期的なセキュリティ研修とワークショップ
-- フィッシング攻撃シミュレーション訓練
-- セキュリティインシデント対応訓練
-- 開発者向けセキュアコーディング実習
+3. データバックアップ
+   - 日次バックアップ実施
+   - 月次バックアップの復旧テスト
+   - オフサイト保管（クラウドストレージ）
 
-### リスク管理と継続的改善
+#### 基本的なセキュリティチェックリスト
 
-#### セキュリティメトリクス
+```bash
+# 月次セキュリティチェック
+echo "=== Monthly Security Check ===" > security_check.log
+echo "Date: $(date)" >> security_check.log
 
-```python
-# セキュリティKPI監視ダッシュボード
-class SecurityMetrics:
-    def __init__(self):
-        self.vulnerability_scanner = VulnerabilityScanner()
-        self.incident_tracker = IncidentTracker()
+# システム更新確認
+echo "--- System Updates ---" >> security_check.log
+apt list --upgradable >> security_check.log
 
-    def generate_security_dashboard(self):
-        return {
-            "vulnerability_metrics": {
-                "critical_count": self.get_critical_vulnerabilities(),
-                "mean_time_to_remediation": self.calculate_mttr(),
-                "patch_compliance_rate": self.get_patch_compliance()
-            },
-            "incident_metrics": {
-                "incident_count": self.get_incident_count(),
-                "mean_time_to_detection": self.calculate_mttd(),
-                "mean_time_to_recovery": self.calculate_mttr_incidents()
-            },
-            "security_posture": {
-                "security_score": self.calculate_security_score(),
-                "compliance_status": self.get_compliance_status(),
-                "risk_level": self.assess_overall_risk()
-            }
-        }
+# 不要なサービス確認
+echo "--- Running Services ---" >> security_check.log
+systemctl list-units --type=service --state=running >> security_check.log
+
+# ユーザーアカウント確認
+echo "--- User Accounts ---" >> security_check.log
+cat /etc/passwd | grep -v nologin >> security_check.log
+
+# ログ容量確認
+echo "--- Log Files Size ---" >> security_check.log
+du -sh /var/log/* >> security_check.log
 ```
 
-#### 継続的セキュリティ改善
+### 小規模チーム向けセキュリティ教育
 
-- 四半期ごとのセキュリティ監査実施
-- 年次セキュリティ戦略見直し
+#### 実践的なセキュリティ研修内容
+
+1. フィッシング対策
+   - 不審メールの見分け方
+   - リンククリック前の確認方法
+   - 報告手順の徹底
+
+2. パスワード管理
+   - パスワードマネージャーの使用
+   - 二要素認証の設定
+   - 共有アカウントの管理
+
+3. 安全なファイル共有
+   - 社外ファイル送信時の注意点
+   - クラウドサービス利用ルール
+   - 機密情報の取り扱い
+
+#### 継続的なセキュリティ向上
+
 - 新興脅威に対する対策検討と実装
 - セキュリティツールと技術の評価・導入
 
 ツール連携指針
 -------------------------
 
-### editFiles
+### コードベース操作ツール
+
+#### editFiles
 
 - 用途: セキュリティドキュメント、設定ファイル、対策手順書、監査レポートの作成・編集
 - 活用例: セキュリティポリシー策定、脆弱性対策手順書作成、インシデント対応マニュアル作成、セキュリティテストスクリプト実装、コンプライアンス文書作成、セキュリティ監査レポート作成
 
-### codebase
+#### codebase
 
 - 用途: 既存セキュリティ実装の分析、認証・認可システムの調査、暗号化機能の評価
 - 活用例: セキュリティ設定ファイル分析、認証フロー調査、暗号化ライブラリ実装確認、セキュリティミドルウェア評価、ログ・監査機能調査、アクセス制御実装分析
 
-### search
+#### search
 
 - 用途: セキュリティ関連情報、脆弱性情報、インシデント記録の検索と調査
 - 活用例: セキュリティ設定ファイル検索、脆弱性情報調査、セキュリティパッチ状況確認、インシデント履歴調査、監査ログ分析、コンプライアンス文書検索
 
-### usages
+#### usages
 
 - 用途: セキュリティ機能の使用状況確認、認証システムの影響範囲分析、セキュリティライブラリの依存関係調査
 - 活用例: 認証機能使用箇所特定、暗号化ライブラリ使用状況調査、セキュリティミドルウェア影響範囲分析、監査機能依存関係確認、アクセス制御機能調査
 
-### runCommands
+### MCPサーバーツール
+
+#### fetch
+
+- 用途: 外部セキュリティ情報取得、脅威インテリジェンス収集、セキュリティ基準調査
+- 活用例:
+    - 脅威インテリジェンス・CVE情報での最新脆弱性対策の実装
+    - セキュリティアドバイザリ・ベストプラクティスガイドでの対策手法の確認
+    - OWASP・NIST・ISO27001基準でのセキュリティ基準の適用
+    - コンプライアンス要件・監査基準での規制対応の実現
+- タイミング: 脅威分析時・脆弱性対応時・コンプライアンス対応時・セキュリティ監査時
+- 期待効果: 脅威対応速度50%向上、セキュリティ基準準拠率98%達成、監査対応効率40%改善
+
+#### duckduckgo
+
+- 用途: 最新脅威情報調査、セキュリティ対策手法収集、コンプライアンス要件調査
+- 活用例:
+    - 「cybersecurity threat intelligence latest 2024」での最新脅威動向調査
+    - 「OWASP top 10 mitigation strategies」での脆弱性対策手法収集
+    - 「zero trust architecture implementation」でのゼロトラスト設計手法調査
+    - 「GDPR CCPA compliance security controls」での規制対応セキュリティ統制収集
+- タイミング: 脅威分析時・セキュリティ戦略策定時・新規脅威対応時・規制対応時
+- 期待効果: 最新脅威の迅速把握、セキュリティ対策精度向上、規制対応リスク軽減
+
+### 実行・テスト環境ツール
+
+#### runCommands
 
 - 用途: セキュリティスキャン実行、脆弱性検査、ペネトレーションテスト、セキュリティツール運用
 - 活用例: 脆弱性スキャナー実行、セキュリティ設定検証、ログ分析スクリプト実行、インシデント対応自動化、コンプライアンスチェック実行、セキュリティ監視設定
 
-### fetch
-
-- 用途: 外部セキュリティ情報取得、脅威インテリジェンス収集、セキュリティ基準調査
-- 活用例: 脅威インテリジェンス収集、CVE情報取得、セキュリティアドバイザリ調査、ベストプラクティスガイド取得、コンプライアンス要件調査、監査基準確認
-
-### openSimpleBrowser
-
-- 用途: セキュリティ管理システム操作、脆弱性データベース調査、セキュリティダッシュボード確認
-- 活用例: セキュリティダッシュボード監視、脆弱性データベース調査、セキュリティツール管理画面操作、インシデント管理システム確認、コンプライアンス監査システム操作、セキュリティ設定画面確認
-
-### problems
+#### problems
 
 - 用途: セキュリティ脆弱性検出、システムセキュリティ課題分析、コンプライアンス問題特定
 - 活用例: セキュリティ脆弱性分析、認証・認可問題検出、暗号化実装課題特定、アクセス制御問題分析、ログ・監査機能課題調査
 
-### githubRepo
+### 専門特化ツール
+
+#### openSimpleBrowser
+
+- 用途: セキュリティ管理システム操作、脆弱性データベース調査、セキュリティダッシュボード確認
+- 活用例: セキュリティダッシュボード監視、脆弱性データベース調査、セキュリティツール管理画面操作、インシデント管理システム確認、コンプライアンス監査システム操作、セキュリティ設定画面確認
+
+#### githubRepo
 
 - 用途: セキュリティツール・ライブラリ調査、OSS脆弱性評価、セキュリティ実装参考事例収集
 - 活用例: セキュリティOSS調査、脆弱性対策ツール評価、セキュリティ実装パターン参考事例収集、暗号化ライブラリ評価、セキュリティテストツール調査
 
-### duckduckgo
-
-- 用途: 最新脅威情報調査、セキュリティ対策手法収集、コンプライアンス要件調査
-- 活用例: 最新脅威インテリジェンス収集、セキュリティベストプラクティス調査、脆弱性対策手法収集、コンプライアンス基準調査、セキュリティ技術動向調査
-
-### playwright
+#### playwright
 
 - 用途: Webアプリケーションセキュリティテスト、認証・認可動作検証、セキュリティ設定確認
 - 活用例: Webアプリケーション脆弱性テスト、認証フロー検証、セッション管理確認、CSRF・XSS脆弱性テスト、アクセス制御動作確認
