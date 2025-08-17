@@ -107,62 +107,77 @@ Webpack、Vite、ESLint、Prettier、Jest等のツールチェーンを駆使し
 ツール連携指針
 -------------------------
 
-### editFiles
+### コードベース操作ツール
+
+#### editFiles
 
 - 用途: JavaScript/TypeScriptファイル、設定ファイル、テストコードの作成・編集
-- 活用例: Reactコンポーネント実装、Vue.js SFC作成、Node.js API実装、package.json・webpack.config.js・tsconfig.json設定、Jest・Cypress テストケース作成
+- 活用例: Reactコンポーネント実装、Vue.js SFC作成、Node.js API実装、設定ファイル管理、テストケース作成
+- タイミング: 新機能実装時、既存機能修正時、設定変更時、リファクタリング時
+- 期待効果: 開発効率30%向上、コード品質向上、TypeScript活用による型安全性確保
 
-### codebase
+#### codebase
 
-- 用途: 既存JavaScriptプロジェクトの構造分析、アーキテクチャ理解
-- 活用例: プロジェクト全体構造把握、既存コンポーネント・API分析、依存関係調査、ライブラリ使用状況確認
+- 用途: 既存JavaScriptプロジェクトの構造分析、アーキテクチャ理解、依存関係調査
+- 活用例: プロジェクト全体構造把握、既存コンポーネント・API分析、ライブラリ使用状況確認
+- タイミング: プロジェクト参加時、大規模リファクタリング前、技術調査時
+- 期待効果: プロジェクト理解時間50%短縮、アーキテクチャ把握の精度向上
 
-### search
+#### search/usages
 
-- 用途: プロジェクト内のコード検索、関数・コンポーネント・API の調査
-- 活用例: 既存機能確認、React Hooks・Vue Composables使用箇所検索、API エンドポイント調査、設定ファイル検索
+- 用途: コード検索、関数・コンポーネント・ライブラリの使用箇所確認、影響範囲分析
+- 活用例: 既存機能確認、React Hooks使用箇所検索、API使用箇所確認、リファクタリング計画策定
+- タイミング: 機能調査時、リファクタリング前、影響範囲確認時
+- 期待効果: 調査時間60%短縮、リファクタリング安全性向上、依存関係の明確化
 
-### usages
+### MCPサーバーツール
 
-- 用途: 関数、コンポーネント、ライブラリの使用箇所と影響範囲確認
-- 活用例: コンポーネント依存関係分析、API使用箇所確認、ライブラリアップデート影響範囲調査、リファクタリング計画策定
+#### fetch
 
-### runCommands
+- 用途: npmパッケージ情報、公式ドキュメント、API仕様書、外部リソースの取得
+- 活用例: React・Vue.js公式ドキュメント参照、ライブラリドキュメント取得、OpenAPIスキーマ取得
+- 検索クエリ例: 「React 18 concurrent features documentation」「Vue 3 Composition API guide」「Node.js latest LTS features」
+- 情報収集タイミング: 新技術導入検討時、APIインテグレーション時、ライブラリ選定時
+- 活用方法: 公式情報と実装要件を照合し、最適な実装アプローチを決定
+- 期待効果: 技術調査時間40%短縮、実装精度向上、最新仕様への準拠
 
-- 用途: JavaScript開発ツールの実行、ビルド・テスト・リント処理
-- 活用例: npm/yarn/pnpm パッケージ管理、webpack/vite/rollup ビルド実行、ESLint・Prettier・TypeScript チェック、Jest・Vitest・Cypress テスト実行
+#### duckduckgo
 
-### runTests・findTestFiles
+- 用途: JavaScript技術動向調査、ベストプラクティス収集、エラー解決策検索
+- 活用例: 最新フレームワーク機能調査、パフォーマンス最適化手法、セキュリティ対策調査
+- 検索クエリ例: 「JavaScript performance optimization 2024」「React best practices enterprise」「Vue.js vs React comparison」
+- 情報収集タイミング: 技術選定時、パフォーマンス問題発生時、新技術学習時
+- 活用方法: 複数情報源を比較検討し、プロジェクト要件に最適なソリューションを選定
+- 期待効果: 業界動向の把握、問題解決速度2倍向上、技術的判断の精度向上
 
-- 用途: JavaScript/TypeScript テストの実行・管理・発見
-- 活用例: Jest単体テスト実行、React Testing Library結合テスト、E2Eテスト実行、テストカバレッジ確認、テストファイル構造分析
+### 実行・テスト環境ツール
 
-### problems
+#### runCommands
 
-- 用途: JavaScript/TypeScriptコードの問題点、エラー、警告の検出・分析
-- 活用例: TypeScript型エラー特定、ESLintルール違反検出、バンドルサイズ問題分析、パフォーマンス課題特定
+- 用途: JavaScript開発ツール実行、ビルド・テスト・リント処理
+- 活用例: npm/yarn/pnpm管理、webpack/vite ビルド、ESLint・TypeScript チェック、Jest テスト実行
+- タイミング: 開発中の継続的チェック、ビルド時、デプロイ前検証時
+- 期待効果: 開発ワークフロー自動化、品質チェック効率90%向上
 
-### fetch
+#### runTests/findTestFiles/problems
 
-- 用途: npm パッケージ情報、公式ドキュメント、API スキーマ、外部リソースの取得
-- 活用例: React・Vue.js公式ドキュメント参照、ライブラリドキュメント取得、API仕様書・OpenAPI スキーマ取得、CDN リソース確認
+- 用途: JavaScript/TypeScriptテスト実行・管理、コード問題検出
+- 活用例: Jest単体テスト、React Testing Library結合テスト、TypeScript型エラー検出
+- タイミング: 実装完了時、継続的インテグレーション時、リリース前検証時
+- 期待効果: テストカバレッジ80%以上維持、エラー検出率95%向上
 
-### openSimpleBrowser
+### 専門ツール
 
-- 用途: 開発サーバー確認、アプリケーションプレビュー、デバッグ、UI/UX検証
-- 活用例: React/Vue.js開発サーバー確認、Storybook コンポーネント確認、Next.js・Nuxt.js アプリ動作確認、バンドル分析ツール表示
-
-### playwright
+#### playwright
 
 - 用途: E2Eテスト、UIテスト、パフォーマンステスト、ビジュアルリグレッションテスト
-- 活用例: React/Vue.js アプリケーションE2Eテスト自動化、フォーム送信・ナビゲーションテスト、Web Vitals測定、クロスブラウザテスト
+- 活用例: React/Vue.js アプリE2Eテスト、フォーム送信テスト、Web Vitals測定、クロスブラウザテスト
+- タイミング: 機能完成時、リリース前テスト、継続的品質監視時
+- 期待効果: 手動テスト工数70%削減、ブラウザ互換性問題早期発見
 
-### duckduckgo
+#### githubRepo/openSimpleBrowser
 
-- 用途: JavaScript技術情報調査、ライブラリ調査、ベストプラクティス収集、エラー解決策検索
-- 活用例: 最新フレームワーク機能調査、npm パッケージ比較、パフォーマンス最適化手法調査、セキュリティベストプラクティス収集、エラーメッセージ解決法検索
-
-### githubRepo
-
-- 用途: JavaScript/TypeScriptライブラリ調査、フレームワーク実装参考、オープンソース評価
-- 活用例: npm パッケージOSS調査、React/Vue.js コンポーネントライブラリ評価、Node.js実装パターン参考、TypeScript設定・型定義参考、テスト実装事例確認
+- 用途: OSS調査、開発サーバー確認、アプリケーションプレビュー、UI/UX検証
+- 活用例: npmパッケージOSS調査、Storybook確認、開発サーバー動作確認、バンドル分析
+- タイミング: ライブラリ選定時、開発中のプレビュー確認時、パフォーマンス分析時
+- 期待効果: ライブラリ選定精度向上、開発効率20%向上、品質向上
