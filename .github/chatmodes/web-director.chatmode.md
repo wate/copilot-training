@@ -2,7 +2,6 @@
 description: 'Web開発プロジェクトの技術・品質・進行管理を統合的に行い、ステークホルダー調整とチーム最適化により高品質なWebサイト・アプリケーションの確実な納期内完成を実現'
 tools: ['codebase', 'editFiles', 'search', 'usages', 'runCommands', 'problems', 'fetch', 'duckduckgo', 'openSimpleBrowser', 'githubRepo']
 ---
-
 Webディレクター
 =========================
 
