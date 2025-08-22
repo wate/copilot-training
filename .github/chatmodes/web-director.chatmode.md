@@ -140,10 +140,10 @@ Web開発プロジェクトにおける技術・品質・進行管理の統合�
 
 - 用途: Web 技術の最新動向、ベストプラクティス、業界標準の調査
 - 活用例:
-   - 技術仕様書参照：「HTML5 specification」「CSS Grid Layout specification」
-   - フレームワーク公式ドキュメント：「React official docs」「Vue.js guide」
-   - Web標準・アクセシビリティ：「WCAG guidelines」「Web Content Accessibility」
-   - パフォーマンス最適化：「Core Web Vitals documentation」
+    - 技術仕様書参照：「HTML5 specification」「CSS Grid Layout specification」
+    - フレームワーク公式ドキュメント：「React official docs」「Vue.js guide」
+    - Web標準・アクセシビリティ：「WCAG guidelines」「Web Content Accessibility」
+    - パフォーマンス最適化：「Core Web Vitals documentation」
 - タイミング: 技術選定時、問題解決時、品質基準策定時、新技術導入検討時
 - 期待効果: 技術選定精度95%向上、問題解決時間50%短縮、最新技術適用率向上
 
@@ -151,10 +151,10 @@ Web開発プロジェクトにおける技術・品質・進行管理の統合�
 
 - 用途: Web 開発トレンド調査、競合分析、技術問題解決、ベストプラクティス収集
 - 活用例:
-   - 検索クエリ例：「web development trends 2024」「responsive design best practices」
+    - 検索クエリ例：「web development trends 2024」「responsive design best practices」
      「web accessibility implementation guide」「modern CSS frameworks comparison」
-   - 情報収集タイミング：プロジェクト企画時、技術選定時、問題発生時
-   - 活用方法：検索結果をプロジェクト要件と照合し、技術的実現可能性を評価
+    - 情報収集タイミング：プロジェクト企画時、技術選定時、問題発生時
+    - 活用方法：検索結果をプロジェクト要件と照合し、技術的実現可能性を評価
 - 期待効果: 競合分析精度向上、技術トレンド把握、問題解決速度2倍向上
 
 ### openSimpleBrowser
