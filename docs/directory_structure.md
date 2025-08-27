@@ -3,6 +3,7 @@
 
 ```
 ├ README.md                 # READMEファイル
+├ .devcontainer/            # 開発環境構築用の設定ファイル格納ディレクトリ
 ├ bin/                      # 各種コマンド格納ディレクトリ
 ├ config/                   # システム設定ファイル格納ディレクトリ
 │   └ schema/                  # データベーススキーマ定義ディレクトリ
@@ -10,8 +11,6 @@
 │   ├ feature/                 # 機能一覧と各機能の詳細説明の格納ディレクトリ
 │   ├ rules/                   # ドキュメントの表記統一ルールの格納ディレクトリ
 │   ├ schema/                  # テーブル定義書の格納ディレクトリ
-│   ├ screen_flow/             # 画面遷移図の格納ディレクトリ
-│   ├ wireframe/               # ワイヤーフレームの格納ディレクトリ
 │   └ workflow/                # ワークフローの格納ディレクトリ
 ├ logs/                     # システムログ格納ディレクトリ
 ├ plugins/                  # プラグイン格納ディレクトリ
@@ -43,16 +42,7 @@
 ├ tests/                    # テストコード格納ディレクトリ
 │   ├ Fixture/                 # テスト用データ格納ディレクトリ
 │   └ TestCase/                # テストケース格納ディレクトリ
-│       ├ Controller/             # コントローラテスト格納ディレクトリ
-│       ├ Model/                  # モデルテスト格納ディレクトリ
-│       └ View/                   # ビューテスト格納ディレクトリ
 ├ tmp/                      # 一時ファイル格納ディレクトリ
-│   ├ cache/                   # キャッシュファイル格納ディレクトリ
-│   │   ├ models/                 # モデルキャッシュ格納ディレクトリ
-│   │   ├ persistent/             # 永続的キャッシュ格納ディレクトリ
-│   │   └ views/                  # ビューキャッシュ格納ディレクトリ
-│   ├ sessions/                # セッションファイル格納ディレクトリ
-│   └ tests/                   # テスト一時ファイル格納ディレクトリ
 ├ vendor/                   # 外部ライブラリ格納ディレクトリ
 ├ webroot/                  # ドキュメントルートディレクトリ
 │   ├ css/                     # CSSファイル格納ディレクトリ
@@ -72,9 +62,12 @@
 ├ deploy.yml                # デプロイ処理用Playbook
 ├ inventory.yml             # Ansibleのインベントリファイル
 ├ mkdocs.yml                # MkDocsの設定ファイル
+├ package.json              # Node.jsのパッケージ設定ファイル
 ├ phpcs.xml                 # PHP_CodeSnifferの設定ファイル
 ├ phpstan.neon              # PHPStanの設定ファイル
 ├ phpunit.xml.dist          # PHPUnitの設定ファイル
 ├ psalm.xml                 # Psalmの設定ファイル
-└ Taskfile.yml              # Taskの設定ファイル
+├ rolldown.config.mjs       # Rolldownの設定ファイル
+├ Taskfile.yml              # Taskの設定ファイル
+└ yarn.lock                 # Yarnのロックファイル
 ```
