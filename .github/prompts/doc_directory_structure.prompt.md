@@ -2,7 +2,7 @@
 mode: agent
 model: Claude Sonnet 4
 ---
-「ディレクトリ構造」ドキュメントの更新
+ディレクトリ構造ドキュメント生成
 =========================
 
 役割
@@ -10,162 +10,175 @@ model: Claude Sonnet 4
 
 [システムアナリスト](../chatmodes/system-analyst.chatmode.md)
 
-タスク固有の追加専門性
--------------------------
+### タスク固有の追加専門性
 
 - プロジェクトディレクトリ構造の分析と理解
 - ファイルシステム階層の体系的な整理と分類
 - 技術文書としてのディレクトリ構造表現の最適化
 - 開発プロジェクトにおけるディレクトリ役割の理解
 
-指示
+指示/タスク
 -------------------------
 
-ディレクトリ構造を調べて、以下のルールに従い内容を作成する。
+### ディレクトリ構造分析
 
-### 出力する内容
+プロジェクトのディレクトリ構造を分析し、技術文書として体系化されたディレクトリ構造ドキュメントを生成します。
 
-- ディレクトリのみを出力しファイルは出力しない
-- ただし「例外事項」で明示されているものはこのルールに従わない
-    - 「存在する場合は含める」に記載のあるものうち、実際に存在するものはファイルであっても出力する
-    - 「存在しなくても含める」に記載のあるものは、実際に存在しなくても出力する
-    - 「含めない」に記載のあるものは出力しない
+#### 主要タスク
 
-### 出力内容のルール
+以下のタスクを順序立てて実行する：
 
-- 出力する階層は以下のルールに従うこと
-    - 基本的には2階層目までを出力する
-    - ただし、以下の条件を満たす場合は3階層目まで出力する
-        - パスが`src/`で始まる
-        - パスが`templates/`で始まる
-- ディレクトリの末尾には`/`を付ける
-- ディレクトリには役割や説明を以下のルールで付記すること
-    - 日本語で記載
-    - ディレクトリ名の後に`#`と半角スペース1つを挟んで記載
-    - 階層に応じて4スペースのインデントを付け、各階層で揃える
-- 階層を表す罫線の出力は以下のルールに従うこと:
-    - `│`は出力する
-    - `├`は出力する
-    - `└`は出力する
-    - `─`は出力しない
+1. ディレクトリ構造の走査と情報収集
+2. 設定ファイル・例外ファイルの存在確認
+3. 階層構造の整理と分類
+4. 技術文書形式での出力生成
 
-### 出力内容の順序について
+#### 実行時の考慮事項
 
-- ディレクトリの昇順、次にファイルの昇順で出力する
-- トップディレクトリの設定ファイルは最後に出力する
-- 後述の「例外事項」の「出力順序について」に明示されているものは、この順序に従わない
+- 技術的制約: 階層深度制限、特定パスでの例外処理
+- 品質基準: 一貫した説明記述、正確な階層表現
+- 可読性: 開発者が理解しやすい構造表現
+- 保守性: 将来の構造変更に対応可能な記述方式
 
-禁止事項
+#### 品質確認項目
+
+- 階層表現の正確性: 罫線記号と階層の対応確認
+- 説明文の適切性: 各ディレクトリ役割の明確な記述
+- 例外処理の正確性: 設定ファイル・除外対象の正しい処理
+
+### 出力構造規則
+
+#### 基本出力内容
+
+1. ディレクトリのみを出力（ファイルは出力しない）
+2. 例外事項で指定されたファイルは含める
+3. 排除対象は出力しない
+
+#### 階層制御規則
+
+##### 基本階層制限
+
+- 標準: 2階層目まで出力
+- 例外: `src/`、`templates/`配下は3階層目まで出力
+
+##### ディレクトリ表記規則
+
+- ディレクトリ末尾: `/`を付与
+- 説明記載: `# 日本語説明文`形式
+- インデント: 階層に応じて4スペース単位
+
+##### 罫線表記規則
+
+- 縦線: `│`使用
+- 分岐: `├`使用  
+- 終端: `└`使用
+- 横線: `─`は使用しない
+
+#### 出力順序規則
+
+1. ディレクトリ昇順、ファイル昇順での出力
+2. トップディレクトリ設定ファイルは最後に配置
+3. `README.*`ファイルは最初に出力
+
+制約・禁止事項
 -------------------------
 
-- カレントディレクトリ表記`./`は出力しない
+### 技術的制約
 
-例外事項
--------------------------
+- 階層制限: 基本2階層、特定パス（`src/`、`templates/`）のみ3階層
+- 表記統一: 罫線記号の厳密な使用規則準拠
+- ディレクトリ識別: 末尾`/`による明確な区別
 
-### 存在する場合は含める
+### 禁止事項
 
-- `.devcontainer/`: ローカル開発環境構築用の設定ファイル格納ディレクトリ
-- `vendor/`: 依存パッケージを管理するためのディレクトリ
-- `webroot/index.php`: WebサーバーのルートURLにアクセスした際に実行されるファイル
-- 各言語のパッケージマネージャーの設定ファイル
-- 各種Linterの設定ファイル
-    - 設定ファイルにどのようなものがあるかは、後述の「各種Linterの設定ファイル」を参照すること
-- デプロイ処理用の設定ファイル
-    - `ansible.cfg`: Ansibleの設定ファイル
-    - `deploy.yml`: Ansibleのデプロイ処理用Playbook
-    - `inventory.yml`: Ansibleのインベントリファイル
-- その他の設定ファイル
-    - `Taskfile.yml`: Taskの設定ファイル
-    - `mkdocs.yml`: MkDocsの設定ファイル
-    - `tsconfig.json`: TypeScriptの設定ファイル
-    - `rollup.config.js`: Rollupの設定ファイル
-    - `.tbls.yml`または`tbls.yml`: テーブル定義ドキュメント生成ツールの設定ファイル
-    - `.pre-commit-config.yaml`: pre-commitの設定ファイル
-    - `README.*`: プロジェクトの概要を記載したドキュメント
+#### 表記制約違反
 
-### 存在しなくても含める
+- カレントディレクトリ表記`./`の使用
+- 横線記号`─`の使用
+- 不適切な階層表現
 
-なし
+#### 出力制約違反
 
-### 含めない
+- 規定階層を超える深い階層の出力
+- 除外対象の誤った出力
 
-- `.devcontainer/*`: 開発環境構築用の設定ファイル格納ディレクトリの中身は含めない
-- `vendor/*`: 依存パッケージの中身は含めない
-- `tree.txt`: treeコマンドの出力結果を格納したファイル
-- `provision_config.yml`: プロビジョニング設定ファイル
+### 例外処理規則
 
-### 出力内容の順序について
+#### 出力対象ファイル（存在する場合のみ）
 
-- `README.*`: 最初に出力すること。
+##### 開発環境・依存性管理
 
-各種Linterの設定ファイル
--------------------------
+- `.devcontainer/`: ローカル開発環境構築用設定ディレクトリ
+- `vendor/`: 依存パッケージ管理ディレクトリ
+- `webroot/index.php`: Webサーバールート実行ファイル
 
-### EditorConfig
+##### 設定ファイル群
 
-- `.editorconfig`
+###### パッケージマネージャー設定
 
-### Markdownlint
+各言語のパッケージマネージャー設定ファイル
 
-- `.markdownlint.yml`
-- `.markdownlint.yaml`
-- `.markdownlint.json`
+###### Linter設定ファイル
 
-### PHP
+- EditorConfig: `.editorconfig`
+- Markdownlint: `.markdownlint.yml`、`.markdownlint.yaml`、`.markdownlint.json`
+- PHP: `phpcs.xml`、`phpstan.neon`、`phpstan.neon.dist`、`phpstan.dist.neon`、`.php-cs-fixer.dist.php`、`.php-cs-fixer.php`
+- Prettier: `.prettierrc`、`.prettierrc.*`
+- ESLint: `.eslint.config.js`、`.eslintrc`、`.eslintrc.*`、`package.json`（`eslintConfig`セクション）
+- Stylelint: `stylelint.config.js`、`.stylelintrc`、`.stylelintrc.*`、`package.json`（`stylelint`セクション）
+- yamllint: `.yamllint`、`.yamllint.yml`、`.yamllint.yaml`
+- textlint: `.textlintrc`、`.textlintrc.*`
+- Ansible-lint: `.ansible-lint`、`.ansible-lint.yml`、`.ansible-lint.yaml`
+- Ruby: `.rubocop.yml`、`.rubocop_todo.yml`
 
-- `phpcs.xml`
-- `phpstan.neon`
-- `phpstan.neon.dist`
-- `phpstan.dist.neon`
-- `.php-cs-fixer.dist.php`
-- `.php-cs-fixer.php`
+###### デプロイ・ビルド設定
 
-### Prettier
+- `ansible.cfg`: Ansible設定ファイル
+- `deploy.yml`: Ansibleデプロイ用Playbook
+- `inventory.yml`: Ansibleインベントリファイル
+- `Taskfile.yml`: Task設定ファイル
+- `mkdocs.yml`: MkDocs設定ファイル
+- `tsconfig.json`: TypeScript設定ファイル
+- `rollup.config.js`: Rollup設定ファイル
+- `.tbls.yml`または`tbls.yml`: テーブル定義ドキュメント生成ツール設定
+- `.pre-commit-config.yaml`: pre-commit設定ファイル
+- `README.*`: プロジェクト概要ドキュメント
 
-- `.prettierrc`
-- `.prettierrc.*`
+#### 除外対象
 
-### ESLint
+- `.devcontainer/*`: 開発環境設定内容
+- `vendor/*`: 依存パッケージ内容
+- `tree.txt`: treeコマンド出力結果
+- `provision_config.yml`: プロビジョニング設定
 
-- `.eslint.config.js`
-- `.eslintrc`
-- `.eslintrc.*`
-- `package.json`（`eslintConfig`セクション）
+#### 特別順序規則
 
-### Stylelint
-
-- `stylelint.config.js`
-- `.stylelintrc`
-- `.stylelintrc.*`
-- `package.json`（`stylelint`セクション）
-
-### yamllint
-
-- `.yamllint`
-- `.yamllint.yml`
-- `.yamllint.yaml`
-
-### textlint
-
-- `.textlintrc`
-- `.textlintrc.*`
-
-### Ansible-lint
-
-- `.ansible-lint`
-- `.ansible-lint.yml`
-- `.ansible-lint.yaml`
-
-### Ruby
-
-- `.rubocop.yml`
-- `.rubocop_todo.yml`
+- `README.*`: 最優先出力
 
 出力フォーマット
 -------------------------
 
+### 必須出力項目
+
+- Markdown形式でのディレクトリ構造表現
+- 罫線記号を用いた視覚的な階層構造
+- 各ディレクトリの役割・目的の明確な記述
+- インデント・記号使用の統一性
+
+### 詳細出力例
+
 [出力内容のサンプル](../examples/doc_directory_structure.md)
+
+### 出力構造
+
+```
+├ README.md                 # READMEファイル
+├ ディレクトリ名/             # ディレクトリの役割説明
+│   ├ サブディレクトリ名/        # サブディレクトリの役割説明
+│   └ 最後のサブディレクトリ/    # 最後のサブディレクトリの説明
+├ 設定ファイル名.ext         # 設定ファイルの説明
+└ 最後のディレクトリ/        # 最後のディレクトリの説明
+```
 
 出力先ファイル名および命名規則
 -------------------------
@@ -174,3 +187,18 @@ model: Claude Sonnet 4
 
 - 出力ファイル: `docs/directory_structure.md`
 - ディレクトリが存在しない場合は作成する
+
+### 命名規則
+
+- ファイル名: ディレクトリ構造の内容を明確に表現
+- 配置場所: プロジェクトドキュメント標準ディレクトリ
+- 文字エンコーディング: UTF-8
+
+エラーハンドリング
+-------------------------
+
+### 基本的なエラーパターン
+
+- ディレクトリアクセス権限不足: 権限エラー時の代替処理
+- 存在しないパス参照: パス確認とエラー回避
+- 文字エンコーディング問題: UTF-8での安全な処理
