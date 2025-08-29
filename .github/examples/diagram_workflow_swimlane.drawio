@@ -1,0 +1,141 @@
+<mxfile host="app.diagrams.net" modified="2025-08-28T04:35:00.000Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" etag="sample-workflow-swimlane" version="24.7.6" type="device">
+  <diagram id="workflow-sample" name="受注管理業務フロー">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 営業部のスイムレーン -->
+        <mxCell id="sales-lane" value="営業部" style="swimlane;horizontal=0;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1200" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- 開始ノード -->
+        <mxCell id="start" value="顧客からの&#xa;問い合わせ" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="sales-lane">
+          <mxGeometry x="30" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 営業部の処理 -->
+        <mxCell id="sales-process1" value="見積作成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="sales-lane">
+          <mxGeometry x="200" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- 判断ポイント -->
+        <mxCell id="sales-decision" value="顧客承認？" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="sales-lane">
+          <mxGeometry x="370" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 受注処理 -->
+        <mxCell id="sales-process2" value="受注登録" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="sales-lane">
+          <mxGeometry x="540" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- 製造部のスイムレーン -->
+        <mxCell id="production-lane" value="製造部" style="swimlane;horizontal=0;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="1200" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- 製造部の処理 -->
+        <mxCell id="production-process1" value="生産計画作成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="production-lane">
+          <mxGeometry x="540" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="production-process2" value="製品製造" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="production-lane">
+          <mxGeometry x="720" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- 品質管理部のスイムレーン -->
+        <mxCell id="quality-lane" value="品質管理部" style="swimlane;horizontal=0;startSize=30;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="480" width="1200" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- 品質管理の処理 -->
+        <mxCell id="quality-process" value="品質検査" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;fontSize=12;" vertex="1" parent="quality-lane">
+          <mxGeometry x="720" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- 出荷判定 -->
+        <mxCell id="quality-decision" value="品質OK？" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="quality-lane">
+          <mxGeometry x="870" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 終了ノード -->
+        <mxCell id="end" value="出荷完了" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="quality-lane">
+          <mxGeometry x="1040" y="80" width="100" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- フロー矢印の定義 -->
+        <!-- 営業部内のフロー -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="start" target="sales-process1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="sales-process1" target="sales-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="sales-decision" target="sales-process2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- スイムレーン間のフロー -->
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="sales-process2" target="production-process1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="production-process1" target="production-process2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="production-process2" target="quality-process">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="quality-process" target="quality-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="quality-decision" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 否認時のフィードバック矢印 -->
+        <mxCell id="arrow-reject" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=1;entryX=0.5;entryY=1;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="sales-decision" target="sales-process1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="200" />
+              <mxPoint x="250" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 品質NG時のフィードバック矢印 -->
+        <mxCell id="arrow-quality-ng" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=1;entryX=0.5;entryY=1;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="quality-decision" target="production-process2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="920" y="720" />
+              <mxPoint x="770" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ラベル -->
+        <mxCell id="label-yes1" value="承認" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="140" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="label-no1" value="否認" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="350" y="190" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="label-yes2" value="合格" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="980" y="620" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="label-no2" value="不合格" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="700" width="50" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

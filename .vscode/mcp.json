@@ -1,83 +1,68 @@
 {
   "servers": {
-    "sequential-thinking": {
-      "command": "npx",
+    "thinking-support": {
+      "type": "stdio",
+      "command": "uv",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ]
-    },
-    "duckdb": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-motherduck",
-        "--db-path",
-        ":memory:"
-      ]
+        "run",
+        "thinking-support"
+      ],
+      "cwd": "~/Project/wate/mcp-thinking-support"
     },
     "playwright": {
+      // https://github.com/microsoft/playwright-mcp
       "command": "npx",
       "args": [
         "-y",
         "@playwright/mcp@latest",
-        "--headless"
+        "--headless",
+        "--isolated"
       ]
     },
-    "git": {
+    "duckduckgo": {
+      // https://github.com/nickclyde/duckduckgo-mcp-server
       "command": "uvx",
       "args": [
-        "mcp-server-git"
-      ]
-    },
-    "sqlite": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-sqlite",
-        "--db-path",
-        ".cache/mcp.db"
+        "duckduckgo-mcp-server",
       ],
     },
-    "perplexity": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "server-perplexity-ask"
-      ],
-      // "env": {
-      //   // @see https://github.com/ppl-ai/modelcontextprotocol?tab=readme-ov-file#step-2-get-a-sonar-api-key
-      //   "PERPLEXITY_API_KEY": "${env:PERPLEXITY_API_KEY}"
-      // },
-      // "envFile": "${workspaceFolder}/.env",
-    },
-    // "markitdown": {
+    // "duckdb": {
+    //   // https://github.com/motherduckdb/mcp-server-motherduck
     //   "command": "uvx",
     //   "args": [
-    //     "markitdown-mcp"
+    //     "mcp-server-motherduck",
+    //     "--db-path",
+    //     ":memory:"
     //   ]
     // },
-    // "slack": {
+    // "context7": {
+    //   "type": "stdio",
     //   "command": "npx",
     //   "args": [
     //     "-y",
-    //     "@modelcontextprotocol/server-slack"
-    //   ],
-    //   "env": {
-    //     // @see https://github.com/modelcontextprotocol/servers/blob/main/src/slack/README.md#setup
-    //     "SLACK_BOT_TOKEN": "${env:SLACK_BOT_TOKEN}",
-    //     "SLACK_TEAM_ID": "${env:SLACK_TEAM_ID}"
-    //   },
-    //   // "envFile": "${workspaceFolder}/.env",
+    //     "@upstash/context7-mcp"
+    //   ]
     // },
-    // "meilisearch": {
+    // "excel": {
+    //   // https://github.com/haris-musa/excel-mcp-server/
     //   "command": "uvx",
     //   "args": [
+    //     "excel-mcp-server",
+    //     "stdio"
+    //   ],
+    // },
+    // "meilisearch": {
+    //   // https://github.com/meilisearch/meilisearch-mcp
+    //   "command": "uvx",
+    //   "args": [
+    //     "-n",
     //     "meilisearch-mcp"
     //   ],
-    //   "env": {
-    //     "MEILI_HTTP_ADDR": "${env:MEILI_HTTP_ADDR}",
-    //     "MEILI_MASTER_KEY": "${env:MEILI_MASTER_KEY}"
-    //   },
-    //   // "envFile": "${workspaceFolder}/.env",
+    //   // "env": {
+    //   //   "MEILI_HTTP_ADDR": "${env:MEILI_HTTP_ADDR}",
+    //   //   "MEILI_MASTER_KEY": "${env:MEILI_MASTER_KEY}"
+    //   // },
+    //   // "envFile": ".env",
     // }
   }
 }

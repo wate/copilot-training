@@ -1,0 +1,168 @@
+# {アクティビティ図のタイトル}
+# =========================
+# 業務プロセス: {プロセス名}
+
+## レイアウトエンジンとテーマの定義
+## -------------------------
+vars: {
+  d2-config: {
+    layout-engine: dagre
+    theme-id: 0
+  }
+}
+
+## スタイル定義
+## -------------------------
+classes: {
+  activity: {
+    shape: rectangle
+    style: {
+      fill: "#f5f5f5"
+      stroke: "#333333"
+      border-radius: 4
+      font-size: 14
+    }
+  }
+  decision: {
+    shape: diamond
+    style: {
+      fill: "#ffffcc"
+      stroke: "#333333"
+      font-size: 14
+    }
+  }
+  merge: {
+    shape: diamond
+    style: {
+      fill: "#e8f5e8"
+      stroke: "#333333"
+      font-size: 14
+    }
+  }
+  start: {
+    shape: circle
+    style: {
+      fill: "#2d7d32"
+      stroke: "#333333"
+      font-size: 14
+    }
+  }
+  end: {
+    shape: circle
+    style: {
+      fill: "#2d7d32"
+      stroke: "#333333"
+      double-border: true
+      font-size: 14
+    }
+  }
+  fork_join: {
+    shape: rectangle
+    style: {
+      fill: "#ffffff"
+      stroke: "#333333"
+      stroke-width: 3
+      font-size: 14
+    }
+  }
+  object: {
+    shape: rectangle
+    style: {
+      fill: "#dae8fc"
+      stroke: "#333333"
+      border-radius: 8
+      font-size: 14
+    }
+  }
+}
+
+## スイムレーン定義（複数の担当者がいる場合）
+## -------------------------
+user_lane: {
+  label: "ユーザー"
+  style: {
+    fill: "#f8f9fa"
+    stroke: "#dee2e6"
+  }
+}
+
+system_lane: {
+  label: "システム"
+  style: {
+    fill: "#e3f2fd"
+    stroke: "#bbdefb"
+  }
+}
+
+## アクティビティ図の定義
+## -------------------------
+start_node: {
+  class: start
+  label: ""
+}
+
+# アクティビティの定義
+activity1: {
+  class: activity
+  label: "活動1の説明"
+}
+
+# 決定ノードの定義
+decision1: {
+  class: decision
+  label: "条件判断?"
+}
+
+# マージノードの定義
+merge1: {
+  class: merge
+  label: ""
+}
+
+# フォークノード（並行処理の開始）
+fork1: {
+  class: fork_join
+  label: "並行処理開始"
+}
+
+# 並行アクティビティ（スイムレーンの使用例）
+user_lane.user_activity: {
+  class: activity
+  label: "ユーザー作業"
+}
+
+system_lane.system_activity: {
+  class: activity
+  label: "システム処理"
+}
+
+# ジョインノード（並行処理の合流）
+join1: {
+  class: fork_join
+  label: "並行処理合流"
+}
+
+# オブジェクト（成果物やデータ）
+object1: {
+  class: object
+  label: "成果物"
+}
+
+end_node: {
+  class: end
+  label: ""
+}
+
+## 制御フローの定義
+## -------------------------
+start_node -> activity1: "開始"
+activity1 -> decision1: "処理完了"
+decision1 -> fork1: "Yes"
+decision1 -> merge1: "No"
+fork1 -> user_lane.user_activity: ""
+fork1 -> system_lane.system_activity: ""
+user_lane.user_activity -> join1: ""
+system_lane.system_activity -> join1: ""
+join1 -> merge1: ""
+merge1 -> object1: "成果物作成"
+object1 -> end_node: "完了"

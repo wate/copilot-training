@@ -1,12 +1,44 @@
 # https://taskfile.dev
 
 version: '3'
-
-vars:
-  GREETING: Hello, World!
-
 tasks:
-  default:
+  ## ----------------------
+  ## アセット関連
+  ## ----------------------
+  asset_build:
     cmds:
-      - echo "{{.GREETING}}"
-    silent: true
+      - task: asset_build_css
+      - task: asset_build_js
+      - task: asset_build_image
+      - task: asset_build_font
+  asset_build_js:
+    desc: JSのビルド/バンドル
+    cmd: npm run build:js
+  asset_build_css:
+    desc: CSSのビルド
+    cmd: npm run build:css
+  asset_build_image:
+    desc: 画像ファイルのコピー処理
+    cmd: npm run build:image
+  asset_build_font:
+    desc: フォントファイルのコピー処理
+    cmd: npm run build:font
+  ## ----------------------
+  ## ドキュメント関連
+  ## ----------------------
+  doc_db:
+    cmd: tbls -c .tbls.yml
+  doc_api:
+    cmds:
+      - task: doc_api_html
+      - task: doc_api_xml
+  doc_api_html:
+    cmd: phpdoc run
+  doc_api_xml:
+    cmd: phpdoc run --template=xml
+  ## ----------------------
+  ## その他
+  ## ----------------------
+  update_npm_package:
+    desc: npmパッケージの更新
+    cmd: ncu -u

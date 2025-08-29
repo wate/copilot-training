@@ -1,0 +1,512 @@
+openapi: 3.0.3
+info:
+  title: サンプルAPI
+  description: |
+    サンプルアプリケーションのREST API仕様書です。
+
+    この仕様書では以下の機能を提供します：
+    - ユーザー管理
+    - 認証・認可
+    - データ操作
+  version: 1.0.0
+  contact:
+    name: 開発チーム
+    email: dev@example.com
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8080/api/v1
+    description: 開発環境
+  - url: https://api.example.com/v1
+    description: 本番環境
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: users
+    description: ユーザー管理
+  - name: auth
+    description: 認証・認可
+
+paths:
+  /users:
+    get:
+      tags:
+        - users
+      summary: ユーザー一覧取得
+      description: |
+        システムに登録されているユーザーの一覧を取得します。
+        ページネーション機能をサポートしています。
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - name: search
+          in: query
+          description: ユーザー名での部分一致検索
+          required: false
+          schema:
+            type: string
+            example: "田中"
+      responses:
+        '200':
+          $ref: '#/components/responses/UserListResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    post:
+      tags:
+        - users
+      summary: ユーザー作成
+      description: 新しいユーザーをシステムに登録します。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/UserResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /users/{userId}:
+    get:
+      tags:
+        - users
+      summary: ユーザー詳細取得
+      description: 指定されたIDのユーザー詳細情報を取得します。
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      tags:
+        - users
+      summary: ユーザー更新
+      description: 指定されたIDのユーザー情報を更新します。
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      tags:
+        - users
+      summary: ユーザー削除
+      description: 指定されたIDのユーザーをシステムから削除します。
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '204':
+          description: ユーザーが正常に削除されました
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /auth/login:
+    post:
+      tags:
+        - auth
+      summary: ログイン
+      description: メールアドレスとパスワードでログインし、アクセストークンを取得します。
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/LoginResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /auth/logout:
+    post:
+      tags:
+        - auth
+      summary: ログアウト
+      description: 現在のセッションを終了し、アクセストークンを無効化します。
+      responses:
+        '204':
+          description: ログアウトが正常に完了しました
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT形式のBearerトークン認証
+
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      description: ユーザーID
+      required: true
+      schema:
+        type: integer
+        format: int64
+        minimum: 1
+        example: 123
+
+    Page:
+      name: page
+      in: query
+      description: ページ番号（1から開始）
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+        example: 1
+
+    Limit:
+      name: limit
+      in: query
+      description: 1ページあたりの取得件数
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+        example: 20
+
+  schemas:
+    User:
+      type: object
+      description: ユーザー情報
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ユーザーID
+          example: 123
+        name:
+          type: string
+          description: ユーザー名
+          maxLength: 100
+          example: "田中太郎"
+        email:
+          type: string
+          format: email
+          description: メールアドレス
+          maxLength: 255
+          example: "tanaka@example.com"
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+          description: ユーザーステータス
+          example: "active"
+        createdAt:
+          type: string
+          format: date-time
+          description: 作成日時
+          example: "2024-01-15T09:30:00Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: 更新日時
+          example: "2024-01-15T09:30:00Z"
+      required:
+        - id
+        - name
+        - email
+        - status
+        - createdAt
+        - updatedAt
+
+    UserCreateRequest:
+      type: object
+      description: ユーザー作成リクエスト
+      properties:
+        name:
+          type: string
+          description: ユーザー名
+          minLength: 1
+          maxLength: 100
+          example: "田中太郎"
+        email:
+          type: string
+          format: email
+          description: メールアドレス
+          maxLength: 255
+          example: "tanaka@example.com"
+        password:
+          type: string
+          description: パスワード
+          minLength: 8
+          maxLength: 100
+          example: "securePassword123"
+      required:
+        - name
+        - email
+        - password
+
+    UserUpdateRequest:
+      type: object
+      description: ユーザー更新リクエスト
+      properties:
+        name:
+          type: string
+          description: ユーザー名
+          minLength: 1
+          maxLength: 100
+          example: "田中太郎"
+        email:
+          type: string
+          format: email
+          description: メールアドレス
+          maxLength: 255
+          example: "tanaka@example.com"
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+          description: ユーザーステータス
+          example: "active"
+
+    LoginRequest:
+      type: object
+      description: ログインリクエスト
+      properties:
+        email:
+          type: string
+          format: email
+          description: メールアドレス
+          example: "tanaka@example.com"
+        password:
+          type: string
+          description: パスワード
+          example: "securePassword123"
+      required:
+        - email
+        - password
+
+    LoginResponse:
+      type: object
+      description: ログインレスポンス
+      properties:
+        accessToken:
+          type: string
+          description: アクセストークン
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        tokenType:
+          type: string
+          description: トークンタイプ
+          example: "Bearer"
+        expiresIn:
+          type: integer
+          description: トークンの有効期限（秒）
+          example: 3600
+        user:
+          $ref: '#/components/schemas/User'
+      required:
+        - accessToken
+        - tokenType
+        - expiresIn
+        - user
+
+    UserList:
+      type: object
+      description: ユーザー一覧
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+          description: ユーザーリスト
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+        - data
+        - pagination
+
+    Pagination:
+      type: object
+      description: ページネーション情報
+      properties:
+        page:
+          type: integer
+          description: 現在のページ番号
+          example: 1
+        limit:
+          type: integer
+          description: 1ページあたりの件数
+          example: 20
+        total:
+          type: integer
+          description: 総件数
+          example: 150
+        totalPages:
+          type: integer
+          description: 総ページ数
+          example: 8
+      required:
+        - page
+        - limit
+        - total
+        - totalPages
+
+    Error:
+      type: object
+      description: エラー情報
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: エラーコード
+              example: "VALIDATION_ERROR"
+            message:
+              type: string
+              description: エラーメッセージ
+              example: "入力値に誤りがあります"
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: フィールド名
+                    example: "email"
+                  message:
+                    type: string
+                    description: フィールド固有のエラーメッセージ
+                    example: "有効なメールアドレスを入力してください"
+              description: 詳細エラー情報
+          required:
+            - code
+            - message
+      required:
+        - error
+
+  responses:
+    UserResponse:
+      description: ユーザー情報
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+
+    UserListResponse:
+      description: ユーザー一覧
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserList'
+
+    LoginResponse:
+      description: ログイン成功
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LoginResponse'
+
+    BadRequestError:
+      description: リクエストエラー
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "VALIDATION_ERROR"
+              message: "入力値に誤りがあります"
+              details:
+                - field: "email"
+                  message: "有効なメールアドレスを入力してください"
+
+    UnauthorizedError:
+      description: 認証エラー
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "UNAUTHORIZED"
+              message: "認証に失敗しました"
+
+    NotFoundError:
+      description: リソースが見つかりません
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "NOT_FOUND"
+              message: "指定されたリソースが見つかりません"
+
+    ConflictError:
+      description: リソースの競合
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "CONFLICT"
+              message: "既に存在するリソースです"
+
+    InternalServerError:
+      description: サーバー内部エラー
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "INTERNAL_SERVER_ERROR"
+              message: "サーバー内部でエラーが発生しました"

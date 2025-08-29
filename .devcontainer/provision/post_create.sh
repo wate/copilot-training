@@ -114,7 +114,10 @@ if [ ! -e ~/.local/pipx/venvs/ansible ]; then
   pipx install ansible --include-deps
   pipx inject ansible ansible-lint --include-apps
 fi
-if [ ! -e ~/.local/pipx/venvs/uv ]; then
+if [ ! -e "${HOME}/.local/pipx/venvs/markitdown" ]; then
+  pipx install "markitdown[all]"
+fi
+if [ ! -e "${HOME}/.local/pipx/venvs/uv" ]; then
   pipx install uv
 fi
 
